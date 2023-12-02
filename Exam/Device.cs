@@ -145,3 +145,63 @@ public class SmartLock : Device
         Console.WriteLine($"{Name} замок: {(IsLocked ? "закрыт" : "открыт")}");
     }
 }
+public class Toilet : Device // туелет  юбхщл 
+{
+    public Toilet(string name) : base(name)
+    {
+    }
+    public void Flush()
+    {
+        Console.WriteLine($"{Name} - Спуск воды.");
+    }
+    public void WashBottom()
+    {
+        Console.WriteLine($"{Name} - Мойка 5 точки.");
+    }
+
+}
+public class Dishwasher : Device
+{
+    public Dishwasher(string name) : base(name)
+    {
+    }
+
+    public void Start()
+    {
+        Console.WriteLine($"{Name} - Запуск посудомоечной машины.");
+    }
+
+    public void Stop()
+    {
+        Console.WriteLine($"{Name} - Остановка посудомоечной машины.");
+    }
+}
+// Класс для представления посудомоечной машины
+public class WashingMachine : Device
+{
+    public WashingMachine(string name) : base(name)
+    {
+    }
+
+    public void Start()
+    {
+        Console.WriteLine($"{Name} - Запуск стиральной машины.");
+    }
+
+    public void Stop()
+    {
+        Console.WriteLine($"{Name} - Остановка стиральной машины.");
+    }
+}
+public class Kettle : Device
+{
+    public Kettle(string name) : base(name)
+    {
+    }
+
+    public void BoilWater()
+    {
+        Console.WriteLine($"{Name} - Кипячение воды.");
+    }
+}
+

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 public class Menu
 {
@@ -42,20 +43,22 @@ public class Menu
         return deviceChoice;
     }
 
-    public static int ShowDeviceControlMenu()
+    public static void ShowDeviceControlMenu()
     {
         Console.WriteLine("\nВыберите действие:");
         Console.WriteLine("1. Включить");
         Console.WriteLine("2. Выключить");
         Console.WriteLine("3. Показать статус");
+        Console.WriteLine("4. Изменить параметры");
+        Console.WriteLine("5. Дополнительные функции");
         Console.WriteLine("4. Назад");
+                               //я тута изменил
+        //int choice;
+        //while (!(int.TryParse(Console.ReadLine(), out choice) && choice >= 1 && choice <= 4))
+        //{
+        //    Console.WriteLine("Неверный выбор. Введите корректное число.");
+        //}
 
-        int choice;
-        while (!(int.TryParse(Console.ReadLine(), out choice) && choice >= 1 && choice <= 4))
-        {
-            Console.WriteLine("Неверный выбор. Введите корректное число.");
-        }
-
-        return choice;
+        //return choice;
     }
 }
