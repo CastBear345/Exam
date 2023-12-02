@@ -73,3 +73,75 @@ public class Thermostat : Device
         Console.WriteLine($"{Name} температура установлена на {Temperature} градусов Цельсия");
     }
 }
+
+public class AlarmClock : Device
+{
+    public string AlarmTime { get; set; }
+
+    public AlarmClock(string name) : base(name)
+    {
+        AlarmTime = "08:00"; // Начальное время будильника
+    }
+
+    public void SetAlarmTime(string newTime)
+    {
+        AlarmTime = newTime;
+        Console.WriteLine($"{Name} время будильника установлено на {AlarmTime}");
+    }
+
+    public override void DisplayStatus()
+    {
+        base.DisplayStatus();
+        Console.WriteLine($"{Name} время будильника: {AlarmTime}");
+    }
+}
+
+public class Television : Device
+{
+    public int Volume { get; set; }
+
+    public Television(string name) : base(name)
+    {
+        Volume = 50; // Начальная громкость
+    }
+
+    public void AdjustVolume(int newVolume)
+    {
+        Volume = Math.Max(0, Math.Min(100, newVolume));
+        Console.WriteLine($"{Name} громкость установлена на {Volume}");
+    }
+
+    public override void DisplayStatus()
+    {
+        base.DisplayStatus();
+        Console.WriteLine($"{Name} громкость: {Volume}");
+    }
+}
+
+public class SmartLock : Device
+{
+    public bool IsLocked { get; set; }
+
+    public SmartLock(string name) : base(name)
+    {
+        IsLocked = true; // Изначально замок закрыт
+    }
+
+    public void Lock()
+    {
+        IsLocked = true;
+        Console.WriteLine($"{Name} замок закрыт");
+    }
+
+    public void Unlock()
+    {
+        IsLocked = false;
+        Console.WriteLine($"{Name} замок открыт");
+    }
+
+    public override void DisplayStatus()
+    {
+        base.DisplayStatus();
+        Console.WriteLine($"{Name} замок: {(IsLocked ? "закрыт" : "открыт")}");
+    }
+}

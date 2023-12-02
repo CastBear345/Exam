@@ -9,6 +9,8 @@ public class Program
             new Room("Гостиная"),
             new Room("Спальня"),
             new Room("Ванная"),
+            new Room("Кухня"),
+            new Room("Детская")
         };
 
         rooms[0].AddDevice(new Lamp("Лампа в гостиной"));
@@ -17,6 +19,10 @@ public class Program
         rooms[1].AddDevice(new Thermostat("Термостат в спальне"));
         rooms[2].AddDevice(new Lamp("Лампа в ванной"));
         rooms[2].AddDevice(new Thermostat("Термостат в ванной"));
+        rooms[3].AddDevice(new Lamp("Лампа в Кухне"));
+        rooms[3].AddDevice(new Thermostat("Термостат в Кухне"));
+        rooms[4].AddDevice(new Lamp("Лампа в Детской"));
+        rooms[4].AddDevice(new Thermostat("Термостат в Детской"));
 
         Console.WriteLine("Панель управления Умным Домом");
 
