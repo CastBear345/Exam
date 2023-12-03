@@ -30,7 +30,7 @@ public class Device
     }
 }
 
-public class Lamp : Device
+/*public class Lamp : Device
 {
     public int Brightness { get; set; }
 
@@ -50,9 +50,9 @@ public class Lamp : Device
         Brightness = Math.Max(0, Math.Min(100, newBrightness));
         Console.WriteLine($"{Name} яркость установлена на {Brightness}%");
     }
-}
+}*/ // lamp
 
-public class Thermostat : Device
+/*public class Thermostat : Device
 {
     public int Temperature { get; set; }
 
@@ -72,7 +72,7 @@ public class Thermostat : Device
         Temperature = newTemperature;
         Console.WriteLine($"{Name} температура установлена на {Temperature} градусов Цельсия");
     }
-}
+}*/ // Thermostat
 
 public class AlarmClock : Device
 {
@@ -145,7 +145,8 @@ public class SmartLock : Device
         Console.WriteLine($"{Name} замок: {(IsLocked ? "закрыт" : "открыт")}");
     }
 }
-public class Toilet : Device // туелет  юбхщл 
+
+/*public class Toilet : Device // туелет  юбхщл 
 {
     public Toilet(string name) : base(name)
     {
@@ -159,8 +160,9 @@ public class Toilet : Device // туелет  юбхщл
         Console.WriteLine($"{Name} - Мойка 5 точки.");
     }
 
-}
-public class Dishwasher : Device
+}*/ // Туалет класс
+
+/*public class Dishwasher : Device
 {
     public Dishwasher(string name) : base(name)
     {
@@ -175,9 +177,9 @@ public class Dishwasher : Device
     {
         Console.WriteLine($"{Name} - Остановка посудомоечной машины.");
     }
-}
+}*/ //Dishwasher
 // Класс для представления посудомоечной машины
-public class WashingMachine : Device
+/*public class WashingMachine : Device
 {
     public WashingMachine(string name) : base(name)
     {
@@ -192,8 +194,8 @@ public class WashingMachine : Device
     {
         Console.WriteLine($"{Name} - Остановка стиральной машины.");
     }
-}
-public class Kettle : Device
+}*/ //WashingMachine
+/*public class Kettle : Device
 {
     public Kettle(string name) : base(name)
     {
@@ -203,5 +205,5 @@ public class Kettle : Device
     {
         Console.WriteLine($"{Name} - Кипячение воды.");
     }
-}
+}*/ //Kettle
 
