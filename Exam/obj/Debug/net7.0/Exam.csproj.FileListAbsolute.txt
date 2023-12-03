@@ -26,3 +26,10 @@ C:\Users\User\Source\Repos\Exam1\Exam\bin\Debug\net7.0\Exam.dll
 C:\Users\User\Source\Repos\Exam1\Exam\bin\Debug\net7.0\Exam.pdb
 C:\Users\User\Source\Repos\Exam1\Exam\obj\Debug\net7.0\Exam.genruntimeconfig.cache
 C:\Users\User\Source\Repos\Exam1\Exam\obj\Debug\net7.0\ref\Exam.dll
+C:\Users\99670\Source\Repos\Exam\Exam\obj\Debug\net7.0\Exam.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\99670\Source\Repos\Exam\Exam\obj\Debug\net7.0\Exam.AssemblyInfoInputs.cache
+C:\Users\99670\Source\Repos\Exam\Exam\obj\Debug\net7.0\Exam.AssemblyInfo.cs
+C:\Users\99670\Source\Repos\Exam\Exam\obj\Debug\net7.0\Exam.csproj.CoreCompileInputs.cache
+C:\Users\99670\Source\Repos\Exam\Exam\obj\Debug\net7.0\Exam.dll
+C:\Users\99670\Source\Repos\Exam\Exam\obj\Debug\net7.0\refint\Exam.dll
+C:\Users\99670\Source\Repos\Exam\Exam\obj\Debug\net7.0\Exam.pdb

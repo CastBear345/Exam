@@ -6,6 +6,7 @@ public class Program
 {
     public static void Main()
     {
-        SmartHomeApp.Start();
+        // SmartHomeApp.Start();
+        LivingRoom.GetLivingRoom(1, true)
     }
 }
