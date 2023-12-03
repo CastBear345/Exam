@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+
 internal class SmartHomeApp
 {
     public static void Start()
@@ -17,13 +18,16 @@ internal class SmartHomeApp
         // Добавляем устройства (лампы, термостаты) в каждую комнату
         rooms[0].AddDevice(new Lamp("Лампа в гостиной"));
         rooms[0].AddDevice(new Thermostat("Термостат в гостиной"));
+        rooms[0].AddDevice(new Television("Телевизор в гостиной"));
 
         rooms[1].AddDevice(new Lamp("Лампа в спальне"));
         rooms[1].AddDevice(new Thermostat("Термостат в спальне"));
+        rooms[1].AddDevice(new SmartLock("Замок в спальне", "12345"));
+        rooms[1].AddDevice(new AlarmClock("Будильник в спальне"));
 
         rooms[2].AddDevice(new Lamp("Лампа в ванной"));
         rooms[2].AddDevice(new Thermostat("Термостат в ванной"));
-        rooms[2].AddDevice(new Toilet("Унитаз в ванной")); //Унитас
+        rooms[2].AddDevice(new Toilet("Унитаз в ванной")); //Унитаз
         rooms[2].AddDevice(new WashingMachine("Стиральная машина в ванной"));// стиралка
 
         rooms[3].AddDevice(new Lamp("Лампа в Кухне"));
@@ -33,6 +37,9 @@ internal class SmartHomeApp
 
         rooms[4].AddDevice(new Lamp("Лампа в Детской"));
         rooms[4].AddDevice(new Thermostat("Термостат в Детской"));
+        rooms[4].AddDevice(new SmartLock("Замок в Детской", "12345"));
+
+        Console.Clear();
 
         // Выводим приветствие
         Console.WriteLine("Панель управления Умным Домом");
@@ -51,7 +58,22 @@ internal class SmartHomeApp
             int roomChoice;
             if (int.TryParse(Console.ReadLine(), out roomChoice) && roomChoice >= 1 && roomChoice <= rooms.Count)
             {
-                ControlRoom(rooms[roomChoice - 1]);
+                if (rooms[roomChoice - 1].Devices[3 - 1] is SmartLock) {
+                    if (rooms[roomChoice - 1].Devices[3 - 1].IsLocked == false)
+                    {
+                        ControlRoom(rooms[roomChoice - 1]);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Замок в этой комнате закрыт.");
+                        Console.WriteLine("Введите пароль чтобы войти: ");
+                        EditDeviceParameters(rooms[roomChoice - 1].Devices[3 - 1]);
+                    }
+                }
+                else
+                {
+                    ControlRoom(rooms[roomChoice - 1]);
+                }
             }
             else if (roomChoice == rooms.Count + 1)
             {
@@ -233,16 +255,17 @@ internal class SmartHomeApp
             int choice;
             if (int.TryParse(Console.ReadLine(), out choice))
             {
+                int newHours, newMinute;
                 switch (choice)
                 {
                     case 1:
                         Console.Write("Введите сначала часы: ");
-                        if (int.TryParse(Console.ReadLine(), out int newHours))
+                        if (int.TryParse(Console.ReadLine(), out newHours))
                         {
                             if (newHours >= 0 && 24 <= newHours)
                             {
                                 Console.Write("Теперь введите минуты: ");
-                                if (int.TryParse(Console.ReadLine(), out int newMinute))
+                                if (int.TryParse(Console.ReadLine(), out newMinute))
                                 {
                                     if (newMinute >= 0 && 59 <= newMinute)
                                     {
@@ -285,26 +308,58 @@ internal class SmartHomeApp
         else if (device is Television)
         {
             Console.WriteLine("\nВыберите параметр для изменения:");
-            Console.WriteLine("1. Температура");
-            Console.WriteLine("2. Назад");
+            Console.WriteLine("1. Смотреть фильм");
+            Console.WriteLine("2. Запустить игру");
+            Console.WriteLine("3. Назад");
 
             int choice;
             if (int.TryParse(Console.ReadLine(), out choice))
             {
+                int i;
+                string ch;
                 switch (choice)
                 {
                     case 1:
-                        Console.Write("Введите новую температуру: ");
-                        if (int.TryParse(Console.ReadLine(), out int temperature))
+                        List<string> movies = new List<string>() { "Годзилла против Конга", "Миссия Невыполнима", "Барби", "Индиана Джонс", "Мстители" };
+                        for (int j = 0; j < movies.Count(); j++)
                         {
-                            ((Thermostat)device).SetTemperature(temperature);
+                            Console.WriteLine(movies[j]);
                         }
-                        else
+                        ch = Console.ReadLine();
+                        if (ch is int)
                         {
-                            Console.WriteLine("Неверный ввод. Температура должна быть числом.");
+                            i = int.Parse(ch);
+                            if (i > movies.Count)
+                            {
+                                Console.WriteLine("Вы выбрали фильм за списком, попробуйте снова. К сожалению больше фильмов нет.");
+                            }
+                            else
+                            {
+                                ((Television)device).Movie(movies[i - 1]);
+                            }
                         }
                         break;
                     case 2:
+                        List<string> games = new List<string>() { "Assasin's Creed", "Resident Evil", "Fallout", "GTA V", "Fortnite" };
+                        for (int j = 0; j < games.Count(); j++)
+                        {
+                            Console.WriteLine(games[j]);
+                        }
+                        ch = Console.ReadLine();
+                        if (ch is int)
+                        {
+                            i = int.Parse(ch);
+                            if (i > games.Count)
+                            {
+                                Console.WriteLine("Вы выбрали игру за списком, попробуйте снова. К сожалению больше игр нет.");
+                            }
+                            else
+                            {
+                                ((Television)device).VideoGame(games[i - 1]);
+                            }
+                        }
+                        break;
+                    case 3:
                         Console.WriteLine("Возврат к выбору действия.");
                         break;
                     default:
@@ -320,26 +375,54 @@ internal class SmartHomeApp
         else if (device is SmartLock)
         {
             Console.WriteLine("\nВыберите параметр для изменения:");
-            Console.WriteLine("1. Температура");
-            Console.WriteLine("2. Назад");
+            Console.WriteLine("1. Изменить пароль");
+            Console.WriteLine("2. Открыть замок");
+            Console.WriteLine("3. Назад");
 
             int choice;
             if (int.TryParse(Console.ReadLine(), out choice))
             {
+                int password;
                 switch (choice)
                 {
                     case 1:
-                        Console.Write("Введите новую температуру: ");
-                        if (int.TryParse(Console.ReadLine(), out int temperature))
+                        if (((SmartLock)device).IsLocked == false)
                         {
-                            ((Thermostat)device).SetTemperature(temperature);
+                            Console.Write("Введите измененный пароль: ");
+                            if (int.TryParse(Console.ReadLine(), out password))
+                            {
+                                ((SmartLock)device).SetPassword(password.ToString());
+                            }
+                            else
+                            {
+                                Console.WriteLine("Неверный ввод. Пароль должен быть числом.");
+                            }
                         }
                         else
                         {
-                            Console.WriteLine("Неверный ввод. Температура должна быть числом.");
+                            Console.Write("Введите пароль: ");
+                            if (int.TryParse(Console.ReadLine(), out password))
+                            {
+                                ((SmartLock)device).UnlockWithPassword(password.ToString());
+                            }
+                            else
+                            {
+                                Console.WriteLine("Неверный ввод. Пароль должен быть числом.");
+                            }
                         }
                         break;
                     case 2:
+                        Console.Write("Введите пароль: ");
+                        if (int.TryParse(Console.ReadLine(), out password))
+                        {
+                            ((SmartLock)device).UnlockWithPassword(password.ToString());
+                        }
+                        else
+                        {
+                            Console.WriteLine("Неверный ввод. Пароль должен быть числом.");
+                        }
+                        break;
+                    case 3:
                         Console.WriteLine("Возврат к выбору действия.");
                         break;
                     default:
@@ -355,7 +438,7 @@ internal class SmartHomeApp
         else if (device is Dishwasher)
         {
             Console.WriteLine("\nВыберите параметр для изменения:");
-            Console.WriteLine("1. Температура");
+            Console.WriteLine("1. Включить посудомоечную машины.");
             Console.WriteLine("2. Назад");
 
             int choice;
@@ -364,15 +447,7 @@ internal class SmartHomeApp
                 switch (choice)
                 {
                     case 1:
-                        Console.Write("Введите новую температуру: ");
-                        if (int.TryParse(Console.ReadLine(), out int temperature))
-                        {
-                            ((Thermostat)device).SetTemperature(temperature);
-                        }
-                        else
-                        {
-                            Console.WriteLine("Неверный ввод. Температура должна быть числом.");
-                        }
+                        ((Dishwasher)device).Start();
                         break;
                     case 2:
                         Console.WriteLine("Возврат к выбору действия.");
@@ -390,7 +465,7 @@ internal class SmartHomeApp
         else if (device is WashingMachine)
         {
             Console.WriteLine("\nВыберите параметр для изменения:");
-            Console.WriteLine("1. Температура");
+            Console.WriteLine("1. Включить стиральную машину.");
             Console.WriteLine("2. Назад");
 
             int choice;
@@ -399,15 +474,7 @@ internal class SmartHomeApp
                 switch (choice)
                 {
                     case 1:
-                        Console.Write("Введите новую температуру: ");
-                        if (int.TryParse(Console.ReadLine(), out int temperature))
-                        {
-                            ((Thermostat)device).SetTemperature(temperature);
-                        }
-                        else
-                        {
-                            Console.WriteLine("Неверный ввод. Температура должна быть числом.");
-                        }
+                        ((WashingMachine)device).Start();
                         break;
                     case 2:
                         Console.WriteLine("Возврат к выбору действия.");
@@ -425,7 +492,7 @@ internal class SmartHomeApp
         else if (device is Kettle)
         {
             Console.WriteLine("\nВыберите параметр для изменения:");
-            Console.WriteLine("1. Температура");
+            Console.WriteLine("1. Включить чайник.");
             Console.WriteLine("2. Назад");
 
             int choice;
@@ -434,15 +501,8 @@ internal class SmartHomeApp
                 switch (choice)
                 {
                     case 1:
-                        Console.Write("Введите новую температуру: ");
-                        if (int.TryParse(Console.ReadLine(), out int temperature))
-                        {
-                            ((Thermostat)device).SetTemperature(temperature);
-                        }
-                        else
-                        {
-                            Console.WriteLine("Неверный ввод. Температура должна быть числом.");
-                        }
+                        ((Kettle)device).StartBoilingWater();
+                        break;
                         break;
                     case 2:
                         Console.WriteLine("Возврат к выбору действия.");
