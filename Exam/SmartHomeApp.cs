@@ -42,17 +42,20 @@ internal class SmartHomeApp
         Console.Clear();
 
         // Выводим приветствие
+        ConsoleColors.SetBlueConsoleColor();
         Console.WriteLine("Панель управления Умным Домом");
 
         // Главный цикл управления
         while (true)
         {
+            ConsoleColors.SetGreenConsoleColor();
             Console.WriteLine("\nВыберите комнату для управления:");
             for (int i = 0; i < rooms.Count; i++)
             {
+                ConsoleColors.SetYellowConsoleColor();
                 Console.WriteLine($"{i + 1}. {rooms[i].Name}");
             }
-
+            ConsoleColors.SetRedConsoleColor();
             Console.WriteLine($"{rooms.Count + 1}. Выход");
 
             int roomChoice;
@@ -65,6 +68,8 @@ internal class SmartHomeApp
                     }
                     else
                     {
+                        ConsoleColors.SetRedConsoleColor();
+                        ConsoleColors.SetYellowConsoleColor();
                         Console.WriteLine("Замок в этой комнате закрыт.");
                         Console.WriteLine("Введите пароль чтобы войти: ");
                         EditDeviceParameters(rooms[roomChoice - 1].Devices[3 - 1]);
@@ -77,11 +82,13 @@ internal class SmartHomeApp
             }
             else if (roomChoice == rooms.Count + 1)
             {
+                ConsoleColors.SetOrangeConsoleColor();
                 Console.WriteLine("Выход из Панели управления Умным Домом. До свидания!");
                 break;
             }
             else
             {
+                ConsoleColors.SetRedConsoleColor();
                 Console.WriteLine("Неверный выбор. Введите корректное число.");
             }
         }
@@ -92,14 +99,19 @@ internal class SmartHomeApp
     {
         while (true)
         {
+            Console.Clear();
+            ConsoleColors.SetBlueConsoleColor();
             Console.WriteLine($"\nУправление комнатой {room.Name}");
+            Console.WriteLine("");
+            ConsoleColors.SetGreenConsoleColor();
             Console.WriteLine("Выберите устройство для управления:");
 
             for (int i = 0; i < room.Devices.Count; i++)
             {
+                ConsoleColors.SetYellowConsoleColor();
                 Console.WriteLine($"{i + 1}. {room.Devices[i].Name}");
             }
-
+            ConsoleColors.SetRedConsoleColor();
             Console.WriteLine($"{room.Devices.Count + 1}. Назад");
 
             if (int.TryParse(Console.ReadLine(), out int deviceChoice) && deviceChoice >= 1 && deviceChoice <= room.Devices.Count)
@@ -108,11 +120,13 @@ internal class SmartHomeApp
             }
             else if (deviceChoice == room.Devices.Count + 1)
             {
+                ConsoleColors.SetOrangeConsoleColor();
                 Console.WriteLine("Возврат к выбору комнаты.");
                 break;
             }
             else
             {
+                ConsoleColors.SetRedConsoleColor();
                 Console.WriteLine("Неверный выбор. Введите корректное число.");
             }
         }
@@ -126,12 +140,15 @@ internal class SmartHomeApp
             Console.Clear();
             device.DisplayStatus();
 
+            ConsoleColors.SetGreenConsoleColor();
             Console.WriteLine("\nВыберите действие:");
+            ConsoleColors.SetYellowConsoleColor();
             Console.WriteLine("1. Включить");
             Console.WriteLine("2. Выключить");
             Console.WriteLine("3. Показать статус");
             Console.WriteLine("4. Изменить параметры");
             Console.WriteLine("5. Дополнительные функции");
+            ConsoleColors.SetRedConsoleColor();
             Console.WriteLine("6. Назад");
 
             int choice;
@@ -155,15 +172,19 @@ internal class SmartHomeApp
                         PerformAdditionalFunctions(device);
                         break;
                     case 6:
+                        ConsoleColors.SetOrangeConsoleColor();
+                        Console.Clear();
                         Console.WriteLine("Возврат к выбору устройства.");
                         return;
                     default:
+                        ConsoleColors.SetRedConsoleColor();
                         Console.WriteLine("Неверный выбор. Введите корректное число.");
                         break;
                 }
             }
             else
             {
+                ConsoleColors.SetRedConsoleColor();
                 Console.WriteLine("Неверный ввод. Введите число.");
             }
         }
@@ -174,9 +195,13 @@ internal class SmartHomeApp
     {
         if (device is Lamp)
         {
+            Console.Clear();
+            ConsoleColors.SetGreenConsoleColor();
             Console.WriteLine("\nВыберите параметр для изменения:");
+            ConsoleColors.SetYellowConsoleColor();
             Console.WriteLine("1. Яркость");
             Console.WriteLine("2. Подсветка Вкл/Выкл");
+            ConsoleColors.SetRedConsoleColor();
             Console.WriteLine("3. Назад");
 
             int choice;
@@ -185,6 +210,7 @@ internal class SmartHomeApp
                 switch (choice)
                 {
                     case 1:
+                        ConsoleColors.SetOrangeConsoleColor();
                         Console.Write("Введите новую яркость (0-100%): ");
                         if (int.TryParse(Console.ReadLine(), out int brightness))
                         {
@@ -192,6 +218,7 @@ internal class SmartHomeApp
                         }
                         else
                         {
+                            ConsoleColors.SetRedConsoleColor();
                             Console.WriteLine("Неверный ввод. Яркость должна быть числом от 0 до 100.");
                         }
                         break;
@@ -199,30 +226,40 @@ internal class SmartHomeApp
                         ((Lamp)device).MoodLighting();
                         break;
                     case 3:
+                        ConsoleColors.SetOrangeConsoleColor();
+                        Console.Clear();
                         Console.WriteLine("Возврат к выбору действия.");
                         break;
                     default:
+                        ConsoleColors.SetRedConsoleColor();
                         Console.WriteLine("Неверный выбор. Введите корректное число.");
                         break;
                 }
             }
             else
             {
+                ConsoleColors.SetRedConsoleColor();
                 Console.WriteLine("Неверный ввод. Введите число.");
             }
         }
         else if (device is Thermostat)
         {
+            Console.Clear();
+            ConsoleColors.SetGreenConsoleColor();
             Console.WriteLine("\nВыберите параметр для изменения:");
+            ConsoleColors.SetYellowConsoleColor();
             Console.WriteLine("1. Температура");
+            ConsoleColors.SetRedConsoleColor();
             Console.WriteLine("2. Назад");
 
             int choice;
             if (int.TryParse(Console.ReadLine(), out choice))
             {
+                Console.Clear();
                 switch (choice)
                 {
                     case 1:
+                        ConsoleColors.SetOrangeConsoleColor();
                         Console.Write("Введите новую температуру: ");
                         if (int.TryParse(Console.ReadLine(), out int temperature))
                         {
@@ -230,26 +267,35 @@ internal class SmartHomeApp
                         }
                         else
                         {
+                            ConsoleColors.SetRedConsoleColor();
                             Console.WriteLine("Неверный ввод. Температура должна быть числом.");
                         }
                         break;
                     case 2:
+                        ConsoleColors.SetOrangeConsoleColor();
+                        Console.Clear();
                         Console.WriteLine("Возврат к выбору действия.");
                         break;
                     default:
+                        ConsoleColors.SetRedConsoleColor();
                         Console.WriteLine("Неверный выбор. Введите корректное число.");
                         break;
                 }
             }
             else
             {
+                ConsoleColors.SetRedConsoleColor();
                 Console.WriteLine("Неверный ввод. Введите число.");
             }
         }
         else if (device is AlarmClock)
         {
+            Console.Clear();
+            ConsoleColors.SetGreenConsoleColor();
             Console.WriteLine("\nВыберите параметр для изменения:");
+            ConsoleColors.SetYellowConsoleColor();
             Console.WriteLine("1. Будильник");
+            ConsoleColors.SetRedConsoleColor();
             Console.WriteLine("2. Назад");
 
             int choice;
@@ -259,11 +305,13 @@ internal class SmartHomeApp
                 switch (choice)
                 {
                     case 1:
+                        ConsoleColors.SetOrangeConsoleColor();
                         Console.Write("Введите сначала часы: ");
                         if (int.TryParse(Console.ReadLine(), out newHours))
                         {
                             if (newHours >= 0 && 24 <= newHours)
                             {
+                                ConsoleColors.SetOrangeConsoleColor();
                                 Console.Write("Теперь введите минуты: ");
                                 if (int.TryParse(Console.ReadLine(), out newMinute))
                                 {
@@ -274,42 +322,54 @@ internal class SmartHomeApp
                                     }
                                     else
                                     {
+                                        ConsoleColors.SetRedConsoleColor();
                                         Console.WriteLine("Неверный ввод. Введите корректно минуты.");
                                     }
                                 }
                                 else
                                 {
+                                    ConsoleColors.SetRedConsoleColor();
                                     Console.WriteLine("Неверный ввод. Минуты должны быть числом.");
                                 }
                             }
                             else
                             {
+                                ConsoleColors.SetRedConsoleColor();
                                 Console.WriteLine("Неверный ввод. Введите корректно часы.");
                             }
                         }
                         else
                         {
+                            ConsoleColors.SetRedConsoleColor();
                             Console.WriteLine("Неверный ввод. Время должно быть числом.");
                         }
                         break;
                     case 2:
+                        ConsoleColors.SetOrangeConsoleColor();
+                        Console.Clear();
                         Console.WriteLine("Возврат к выбору действия.");
                         break;
                     default:
+                        ConsoleColors.SetRedConsoleColor();
                         Console.WriteLine("Неверный выбор. Введите корректное число.");
                         break;
                 }
             }
             else
             {
+                ConsoleColors.SetRedConsoleColor();
                 Console.WriteLine("Неверный ввод. Введите число.");
             }
         }
         else if (device is Television)
         {
+            Console.Clear();
+            ConsoleColors.SetGreenConsoleColor();
             Console.WriteLine("\nВыберите параметр для изменения:");
+            ConsoleColors.SetYellowConsoleColor();
             Console.WriteLine("1. Смотреть фильм");
             Console.WriteLine("2. Запустить игру");
+            ConsoleColors.SetRedConsoleColor();
             Console.WriteLine("3. Назад");
 
             int choice;
@@ -323,6 +383,7 @@ internal class SmartHomeApp
                         List<string> movies = new List<string>() { "Годзилла против Конга", "Миссия Невыполнима", "Барби", "Индиана Джонс", "Мстители" };
                         for (int j = 0; j < movies.Count(); j++)
                         {
+                            ConsoleColors.SetYellowConsoleColor();
                             Console.WriteLine(movies[j]);
                         }
                         ch = Console.ReadLine();
@@ -331,6 +392,7 @@ internal class SmartHomeApp
                             i = int.Parse(ch);
                             if (i > movies.Count)
                             {
+                                ConsoleColors.SetYellowConsoleColor();
                                 Console.WriteLine("Вы выбрали фильм за списком, попробуйте снова. К сожалению больше фильмов нет.");
                             }
                             else
@@ -343,6 +405,7 @@ internal class SmartHomeApp
                         List<string> games = new List<string>() { "Assasin's Creed", "Resident Evil", "Fallout", "GTA V", "Fortnite" };
                         for (int j = 0; j < games.Count(); j++)
                         {
+                            ConsoleColors.SetYellowConsoleColor();
                             Console.WriteLine(games[j]);
                         }
                         ch = Console.ReadLine();
@@ -351,6 +414,7 @@ internal class SmartHomeApp
                             i = int.Parse(ch);
                             if (i > games.Count)
                             {
+                                ConsoleColors.SetYellowConsoleColor();
                                 Console.WriteLine("Вы выбрали игру за списком, попробуйте снова. К сожалению больше игр нет.");
                             }
                             else
@@ -360,23 +424,31 @@ internal class SmartHomeApp
                         }
                         break;
                     case 3:
+                        ConsoleColors.SetOrangeConsoleColor();
+                        Console.Clear();
                         Console.WriteLine("Возврат к выбору действия.");
                         break;
                     default:
+                        ConsoleColors.SetRedConsoleColor();
                         Console.WriteLine("Неверный выбор. Введите корректное число.");
                         break;
                 }
             }
             else
             {
+                ConsoleColors.SetRedConsoleColor();
                 Console.WriteLine("Неверный ввод. Введите число.");
             }
         }
         else if (device is SmartLock)
         {
+            Console.Clear();
+            ConsoleColors.SetGreenConsoleColor();
             Console.WriteLine("\nВыберите параметр для изменения:");
+            ConsoleColors.SetYellowConsoleColor();
             Console.WriteLine("1. Изменить пароль");
             Console.WriteLine("2. Открыть замок");
+            ConsoleColors.SetRedConsoleColor();
             Console.WriteLine("3. Назад");
 
             int choice;
@@ -388,6 +460,7 @@ internal class SmartHomeApp
                     case 1:
                         if (((SmartLock)device).IsLocked == false)
                         {
+                            ConsoleColors.SetOrangeConsoleColor();
                             Console.Write("Введите измененный пароль: ");
                             if (int.TryParse(Console.ReadLine(), out password))
                             {
@@ -395,11 +468,13 @@ internal class SmartHomeApp
                             }
                             else
                             {
+                                ConsoleColors.SetRedConsoleColor();
                                 Console.WriteLine("Неверный ввод. Пароль должен быть числом.");
                             }
                         }
                         else
                         {
+                            ConsoleColors.SetOrangeConsoleColor();
                             Console.Write("Введите пароль: ");
                             if (int.TryParse(Console.ReadLine(), out password))
                             {
@@ -407,11 +482,13 @@ internal class SmartHomeApp
                             }
                             else
                             {
+                                ConsoleColors.SetRedConsoleColor();
                                 Console.WriteLine("Неверный ввод. Пароль должен быть числом.");
                             }
                         }
                         break;
                     case 2:
+                        ConsoleColors.SetOrangeConsoleColor();
                         Console.Write("Введите пароль: ");
                         if (int.TryParse(Console.ReadLine(), out password))
                         {
@@ -419,26 +496,36 @@ internal class SmartHomeApp
                         }
                         else
                         {
+                            ConsoleColors.SetRedConsoleColor();
                             Console.WriteLine("Неверный ввод. Пароль должен быть числом.");
                         }
                         break;
                     case 3:
+
+                        ConsoleColors.SetOrangeConsoleColor();
+                        Console.Clear();
                         Console.WriteLine("Возврат к выбору действия.");
                         break;
                     default:
+                        ConsoleColors.SetRedConsoleColor();
                         Console.WriteLine("Неверный выбор. Введите корректное число.");
                         break;
                 }
             }
             else
             {
+                ConsoleColors.SetRedConsoleColor();
                 Console.WriteLine("Неверный ввод. Введите число.");
             }
         }
         else if (device is Dishwasher)
         {
+            Console.Clear();
+            ConsoleColors.SetGreenConsoleColor();
             Console.WriteLine("\nВыберите параметр для изменения:");
+            ConsoleColors.SetYellowConsoleColor();
             Console.WriteLine("1. Включить посудомоечную машины.");
+            ConsoleColors.SetRedConsoleColor();
             Console.WriteLine("2. Назад");
 
             int choice;
@@ -450,22 +537,30 @@ internal class SmartHomeApp
                         ((Dishwasher)device).Start();
                         break;
                     case 2:
+                        ConsoleColors.SetOrangeConsoleColor();
+                        Console.Clear();
                         Console.WriteLine("Возврат к выбору действия.");
                         break;
                     default:
+                        ConsoleColors.SetRedConsoleColor();
                         Console.WriteLine("Неверный выбор. Введите корректное число.");
                         break;
                 }
             }
             else
             {
+                ConsoleColors.SetRedConsoleColor();
                 Console.WriteLine("Неверный ввод. Введите число.");
             }
         }
         else if (device is WashingMachine)
         {
+            Console.Clear();
+            ConsoleColors.SetGreenConsoleColor();
             Console.WriteLine("\nВыберите параметр для изменения:");
+            ConsoleColors.SetYellowConsoleColor();
             Console.WriteLine("1. Включить стиральную машину.");
+            ConsoleColors.SetRedConsoleColor();
             Console.WriteLine("2. Назад");
 
             int choice;
@@ -477,22 +572,30 @@ internal class SmartHomeApp
                         ((WashingMachine)device).Start();
                         break;
                     case 2:
+                        ConsoleColors.SetOrangeConsoleColor();
+                        Console.Clear();
                         Console.WriteLine("Возврат к выбору действия.");
                         break;
                     default:
+                        ConsoleColors.SetRedConsoleColor();
                         Console.WriteLine("Неверный выбор. Введите корректное число.");
                         break;
                 }
             }
             else
             {
+                ConsoleColors.SetRedConsoleColor();
                 Console.WriteLine("Неверный ввод. Введите число.");
             }
         }
         else if (device is Kettle)
         {
+            Console.Clear();
+            ConsoleColors.SetGreenConsoleColor();
             Console.WriteLine("\nВыберите параметр для изменения:");
+            ConsoleColors.SetYellowConsoleColor();
             Console.WriteLine("1. Включить чайник.");
+            ConsoleColors.SetRedConsoleColor();
             Console.WriteLine("2. Назад");
 
             int choice;
@@ -505,24 +608,30 @@ internal class SmartHomeApp
                         break;
                         break;
                     case 2:
+                        ConsoleColors.SetOrangeConsoleColor();
+                        Console.Clear();
                         Console.WriteLine("Возврат к выбору действия.");
                         break;
                     default:
+                        ConsoleColors.SetRedConsoleColor();
                         Console.WriteLine("Неверный выбор. Введите корректное число.");
                         break;
                 }
             }
             else
             {
+                ConsoleColors.SetRedConsoleColor();
                 Console.WriteLine("Неверный ввод. Введите число.");
             }
         }
         else
         {
+            ConsoleColors.SetOrangeConsoleColor();
             Console.WriteLine("Изменение параметров не поддерживается для этого устройства.");
         }
 
         // Ждем, чтобы пользователь мог увидеть результат изменения параметров
+        ConsoleColors.SetOrangeConsoleColor();
         Console.WriteLine("\nНажмите Enter, чтобы продолжить...");
         Console.ReadLine();
     }
@@ -532,9 +641,13 @@ internal class SmartHomeApp
     {
         if (device is Toilet)
         {
+            Console.Clear();
+            ConsoleColors.SetGreenConsoleColor();
             Console.WriteLine("\nДополнительные функции:");
+            ConsoleColors.SetYellowConsoleColor();
             Console.WriteLine("1. Спустить воду");
             Console.WriteLine("2. Помыть 5 точку");
+            ConsoleColors.SetRedConsoleColor();
             Console.WriteLine("3. Назад");
 
             int choice;
@@ -549,24 +662,30 @@ internal class SmartHomeApp
                         ((Toilet)device).WashBottom();
                         break;
                     case 3:
+                        ConsoleColors.SetOrangeConsoleColor();
+                        Console.Clear();
                         Console.WriteLine("Возврат к выбору действия.");
                         break;
                     default:
+                        ConsoleColors.SetRedConsoleColor();
                         Console.WriteLine("Неверный выбор. Введите корректное число.");
                         break;
                 }
             }
             else
             {
+                ConsoleColors.SetRedConsoleColor();
                 Console.WriteLine("Неверный ввод. Введите число.");
             }
         }
         else
         {
+            ConsoleColors.SetRedConsoleColor();
             Console.WriteLine("Дополнительные функции не поддерживаются для этого устройства.");
         }
 
         // Ждем, чтобы пользователь мог увидеть результат выполнения дополнительных функций
+        ConsoleColors.SetOrangeConsoleColor();
         Console.WriteLine("\nНажмите Enter, чтобы продолжить...");
         Console.ReadLine();
     }

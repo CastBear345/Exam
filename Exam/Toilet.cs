@@ -9,11 +9,13 @@ public class Toilet : Device
 
     public void Flush()
     {
+        ConsoleColors.SetYellowConsoleColor();
         Console.WriteLine($"{Name} - Спуск воды.");
     }
 
     public void WashBottom()
     {
+        ConsoleColors.SetYellowConsoleColor();
         Console.WriteLine($"{Name} - Мойка 5 точек.");
     }
 

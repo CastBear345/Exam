@@ -39,6 +39,7 @@ public class Device
 
     public virtual void DisplayStatus()
     {
+        ConsoleColors.SetBlueConsoleColor();
         Console.WriteLine($"{Name} включено: {IsOn}");
     }
 }

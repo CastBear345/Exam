@@ -36,4 +36,10 @@ public static class ConsoleColors
     {
         Console.ForegroundColor = ConsoleColor.Yellow;
     }
+    // Оронжевый я хочу спать ааааа!!!
+    public static void SetOrangeConsoleColor()
+    {
+        Console.ForegroundColor = ConsoleColor.DarkYellow;
+    }
+
 }

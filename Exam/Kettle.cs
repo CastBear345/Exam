@@ -9,6 +9,7 @@ public class Kettle : Device
 
     public void BoilWater()
     {
+        ConsoleColors.SetYellowConsoleColor();
         Console.WriteLine($"{Name} - Кипячение воды.");
         Thread.Sleep(6000);
         StartBoilingWater();
@@ -23,6 +24,7 @@ public class Kettle : Device
         }
         else
         {
+            ConsoleColors.SetYellowConsoleColor();
             Console.WriteLine($"{Name} вода уже кипит.");
             Thread.Sleep(2000);
             Console.WriteLine($"{Name} чайник выключен.");
