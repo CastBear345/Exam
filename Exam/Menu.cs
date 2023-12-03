@@ -52,7 +52,7 @@ public class Menu
         Console.WriteLine("4. Изменить параметры");
         Console.WriteLine("5. Дополнительные функции");
         Console.WriteLine("4. Назад");
-                               //я тута изменил
+                               //я тута изменил Asmandiyar
         //int choice;
         //while (!(int.TryParse(Console.ReadLine(), out choice) && choice >= 1 && choice <= 4))
         //{
