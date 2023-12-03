@@ -25,9 +25,6 @@ using System.IO;
             return map;
         }
 
-
-
-
         public static int GetMaxLength(string[] lines )
         {
             int maxLength = lines[0].Length;
@@ -38,13 +35,4 @@ using System.IO;
             return maxLength;
 
         }
-
-
-
-
-      
-
-
-        
     }
-
