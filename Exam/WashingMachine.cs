@@ -16,4 +16,16 @@ public class WashingMachine : Device
     {
         Console.WriteLine($"{Name} - Остановка стиральной машины.");
     }
+
+    public void TogglePower()
+    {
+        if (IsOn)
+        {
+            Stop();
+        }
+        else
+        {
+            Start();
+        }
+    }
 }

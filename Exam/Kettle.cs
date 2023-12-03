@@ -11,4 +11,17 @@ public class Kettle : Device
     {
         Console.WriteLine($"{Name} - Кипячение воды.");
     }
+
+    public void StartBoilingWater()
+    {
+        if (!IsOn)
+        {
+            BoilWater();
+            TurnOn();
+        }
+        else
+        {
+            Console.WriteLine($"{Name} вода уже кипит");
+        }
+    }
 }

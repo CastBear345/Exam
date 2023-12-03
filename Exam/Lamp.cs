@@ -21,4 +21,18 @@ public class Lamp : Device
         Brightness = Math.Max(0, Math.Min(100, newBrightness));
         Console.WriteLine($"{Name} яркость установлена на {Brightness}%");
     }
+
+    public void MoodLighting()
+    {
+        if (!IsOn)
+        {
+            Console.WriteLine($"{Name} включает режим подсветки для создания уюта.");
+            TurnOn();
+        }
+        else
+        {
+            Console.WriteLine($"{Name} выключен, невозможно включить режим подсветки.");
+            TurnOff();
+        }
+    }
 }

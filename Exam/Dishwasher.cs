@@ -16,4 +16,16 @@ public class Dishwasher : Device
     {
         Console.WriteLine($"{Name} - Остановка посудомоечной машины.");
     }
+
+    public void TogglePower()
+    {
+        if (IsOn)
+        {
+            Stop();
+        }
+        else
+        {
+            Start();
+        }
+    }
 }

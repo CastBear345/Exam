@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 internal class SmartHomeApp
 {
-    public static void Main()
+    public static void Start()
     {
         // Создаем список комнат
         List<Room> rooms = new List<Room>
@@ -80,8 +80,7 @@ internal class SmartHomeApp
 
             Console.WriteLine($"{room.Devices.Count + 1}. Назад");
 
-            int deviceChoice;
-            if (int.TryParse(Console.ReadLine(), out deviceChoice) && deviceChoice >= 1 && deviceChoice <= room.Devices.Count)
+            if (int.TryParse(Console.ReadLine(), out int deviceChoice) && deviceChoice >= 1 && deviceChoice <= room.Devices.Count)
             {
                 ControlDevice(room.Devices[deviceChoice - 1]);
             }
@@ -155,7 +154,8 @@ internal class SmartHomeApp
         {
             Console.WriteLine("\nВыберите параметр для изменения:");
             Console.WriteLine("1. Яркость");
-            Console.WriteLine("2. Назад");
+            Console.WriteLine("2. Подсветка Вкл/Выкл");
+            Console.WriteLine("3. Назад");
 
             int choice;
             if (int.TryParse(Console.ReadLine(), out choice))
@@ -174,6 +174,9 @@ internal class SmartHomeApp
                         }
                         break;
                     case 2:
+                        ((Lamp)device).MoodLighting();
+                        break;
+                    case 3:
                         Console.WriteLine("Возврат к выбору действия.");
                         break;
                     default:
@@ -187,6 +190,239 @@ internal class SmartHomeApp
             }
         }
         else if (device is Thermostat)
+        {
+            Console.WriteLine("\nВыберите параметр для изменения:");
+            Console.WriteLine("1. Температура");
+            Console.WriteLine("2. Назад");
+
+            int choice;
+            if (int.TryParse(Console.ReadLine(), out choice))
+            {
+                switch (choice)
+                {
+                    case 1:
+                        Console.Write("Введите новую температуру: ");
+                        if (int.TryParse(Console.ReadLine(), out int temperature))
+                        {
+                            ((Thermostat)device).SetTemperature(temperature);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Неверный ввод. Температура должна быть числом.");
+                        }
+                        break;
+                    case 2:
+                        Console.WriteLine("Возврат к выбору действия.");
+                        break;
+                    default:
+                        Console.WriteLine("Неверный выбор. Введите корректное число.");
+                        break;
+                }
+            }
+            else
+            {
+                Console.WriteLine("Неверный ввод. Введите число.");
+            }
+        }
+        else if (device is AlarmClock)
+        {
+            Console.WriteLine("\nВыберите параметр для изменения:");
+            Console.WriteLine("1. Будильник");
+            Console.WriteLine("2. Назад");
+
+            int choice;
+            if (int.TryParse(Console.ReadLine(), out choice))
+            {
+                switch (choice)
+                {
+                    case 1:
+                        Console.Write("Введите сначала часы: ");
+                        if (int.TryParse(Console.ReadLine(), out int newHours))
+                        {
+                            if (newHours >= 0 && 24 <= newHours)
+                            {
+                                Console.Write("Теперь введите минуты: ");
+                                if (int.TryParse(Console.ReadLine(), out int newMinute))
+                                {
+                                    if (newMinute >= 0 && 59 <= newMinute)
+                                    {
+                                        string newTime = newHours.ToString() + ":" + newMinute.ToString();
+                                        ((AlarmClock)device).ChangeAlarmTime(newTime);
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Неверный ввод. Введите корректно минуты.");
+                                    }
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Неверный ввод. Минуты должны быть числом.");
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("Неверный ввод. Введите корректно часы.");
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Неверный ввод. Время должно быть числом.");
+                        }
+                        break;
+                    case 2:
+                        Console.WriteLine("Возврат к выбору действия.");
+                        break;
+                    default:
+                        Console.WriteLine("Неверный выбор. Введите корректное число.");
+                        break;
+                }
+            }
+            else
+            {
+                Console.WriteLine("Неверный ввод. Введите число.");
+            }
+        }
+        else if (device is Television)
+        {
+            Console.WriteLine("\nВыберите параметр для изменения:");
+            Console.WriteLine("1. Температура");
+            Console.WriteLine("2. Назад");
+
+            int choice;
+            if (int.TryParse(Console.ReadLine(), out choice))
+            {
+                switch (choice)
+                {
+                    case 1:
+                        Console.Write("Введите новую температуру: ");
+                        if (int.TryParse(Console.ReadLine(), out int temperature))
+                        {
+                            ((Thermostat)device).SetTemperature(temperature);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Неверный ввод. Температура должна быть числом.");
+                        }
+                        break;
+                    case 2:
+                        Console.WriteLine("Возврат к выбору действия.");
+                        break;
+                    default:
+                        Console.WriteLine("Неверный выбор. Введите корректное число.");
+                        break;
+                }
+            }
+            else
+            {
+                Console.WriteLine("Неверный ввод. Введите число.");
+            }
+        }
+        else if (device is SmartLock)
+        {
+            Console.WriteLine("\nВыберите параметр для изменения:");
+            Console.WriteLine("1. Температура");
+            Console.WriteLine("2. Назад");
+
+            int choice;
+            if (int.TryParse(Console.ReadLine(), out choice))
+            {
+                switch (choice)
+                {
+                    case 1:
+                        Console.Write("Введите новую температуру: ");
+                        if (int.TryParse(Console.ReadLine(), out int temperature))
+                        {
+                            ((Thermostat)device).SetTemperature(temperature);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Неверный ввод. Температура должна быть числом.");
+                        }
+                        break;
+                    case 2:
+                        Console.WriteLine("Возврат к выбору действия.");
+                        break;
+                    default:
+                        Console.WriteLine("Неверный выбор. Введите корректное число.");
+                        break;
+                }
+            }
+            else
+            {
+                Console.WriteLine("Неверный ввод. Введите число.");
+            }
+        }
+        else if (device is Dishwasher)
+        {
+            Console.WriteLine("\nВыберите параметр для изменения:");
+            Console.WriteLine("1. Температура");
+            Console.WriteLine("2. Назад");
+
+            int choice;
+            if (int.TryParse(Console.ReadLine(), out choice))
+            {
+                switch (choice)
+                {
+                    case 1:
+                        Console.Write("Введите новую температуру: ");
+                        if (int.TryParse(Console.ReadLine(), out int temperature))
+                        {
+                            ((Thermostat)device).SetTemperature(temperature);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Неверный ввод. Температура должна быть числом.");
+                        }
+                        break;
+                    case 2:
+                        Console.WriteLine("Возврат к выбору действия.");
+                        break;
+                    default:
+                        Console.WriteLine("Неверный выбор. Введите корректное число.");
+                        break;
+                }
+            }
+            else
+            {
+                Console.WriteLine("Неверный ввод. Введите число.");
+            }
+        }
+        else if (device is WashingMachine)
+        {
+            Console.WriteLine("\nВыберите параметр для изменения:");
+            Console.WriteLine("1. Температура");
+            Console.WriteLine("2. Назад");
+
+            int choice;
+            if (int.TryParse(Console.ReadLine(), out choice))
+            {
+                switch (choice)
+                {
+                    case 1:
+                        Console.Write("Введите новую температуру: ");
+                        if (int.TryParse(Console.ReadLine(), out int temperature))
+                        {
+                            ((Thermostat)device).SetTemperature(temperature);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Неверный ввод. Температура должна быть числом.");
+                        }
+                        break;
+                    case 2:
+                        Console.WriteLine("Возврат к выбору действия.");
+                        break;
+                    default:
+                        Console.WriteLine("Неверный выбор. Введите корректное число.");
+                        break;
+                }
+            }
+            else
+            {
+                Console.WriteLine("Неверный ввод. Введите число.");
+            }
+        }
+        else if (device is Kettle)
         {
             Console.WriteLine("\nВыберите параметр для изменения:");
             Console.WriteLine("1. Температура");

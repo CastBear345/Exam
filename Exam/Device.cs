@@ -4,7 +4,17 @@ using System.Collections.Generic;
 public class Device
 {
     public string Name { get; set; }
-    public bool IsOn { get; set; }
+    private bool isOn;
+
+    public bool IsOn
+    {
+        get { return isOn; }
+        private set
+        {
+            isOn = value;
+            TogglePower(); // Вызываем TogglePower при изменении состояния
+        }
+    }
 
     public Device(string name)
     {
@@ -24,55 +34,16 @@ public class Device
         Console.WriteLine($"{Name} выключено");
     }
 
+    public virtual void TogglePower()
+    {
+        Console.WriteLine($"{Name} включено: {IsOn}");
+    }
+
     public virtual void DisplayStatus()
     {
         Console.WriteLine($"{Name} включено: {IsOn}");
     }
 }
-
-/*public class Lamp : Device
-{
-    public int Brightness { get; set; }
-
-    public Lamp(string name) : base(name)
-    {
-        Brightness = 50; // Начальная яркость
-    }
-
-    public override void DisplayStatus()
-    {
-        base.DisplayStatus();
-        Console.WriteLine($"{Name} яркость: {Brightness}%");
-    }
-
-    public void AdjustBrightness(int newBrightness)
-    {
-        Brightness = Math.Max(0, Math.Min(100, newBrightness));
-        Console.WriteLine($"{Name} яркость установлена на {Brightness}%");
-    }
-}*/ // lamp
-
-/*public class Thermostat : Device
-{
-    public int Temperature { get; set; }
-
-    public Thermostat(string name) : base(name)
-    {
-        Temperature = 22; // Начальная температура
-    }
-
-    public override void DisplayStatus()
-    {
-        base.DisplayStatus();
-        Console.WriteLine($"{Name} температура: {Temperature} градусов Цельсия");
-    }
-
-    public void SetTemperature(int newTemperature)
-    {
-        Temperature = newTemperature;
-        Console.WriteLine($"{Name} температура установлена на {Temperature} градусов Цельсия");
-    }
-}*/ // Thermostat
 
 public class AlarmClock : Device
 {
@@ -87,6 +58,23 @@ public class AlarmClock : Device
     {
         AlarmTime = newTime;
         Console.WriteLine($"{Name} время будильника установлено на {AlarmTime}");
+    }
+
+    public void ChangeAlarmTime(string newTime)
+    {
+        if (AlarmTime != newTime)
+        {
+            SetAlarmTime(newTime);
+        }
+        else
+        {
+            Console.WriteLine($"{Name} время будильника уже установлено на {AlarmTime}");
+        }
+    }
+
+    public void Snooze()
+    {
+        Console.WriteLine($"{Name} прерывает звонок будильника на 10 минут (режим сна).");
     }
 
     public override void DisplayStatus()
@@ -111,6 +99,40 @@ public class Television : Device
         Console.WriteLine($"{Name} громкость установлена на {Volume}");
     }
 
+    public void IncreaseVolume(int increment)
+    {
+        AdjustVolume(Volume + increment);
+    }
+
+    public void DecreaseVolume(int decrement)
+    {
+        AdjustVolume(Volume - decrement);
+    }
+
+    public void WatchMovie(string movieTitle)
+    {
+        if (IsOn)
+        {
+            Console.WriteLine($"{Name} начинает просмотр фильма: {movieTitle}.");
+        }
+        else
+        {
+            Console.WriteLine($"{Name} выключен, невозможно начать просмотр фильма.");
+        }
+    }
+
+    public void PlayVideoGame(string gameTitle)
+    {
+        if (IsOn)
+        {
+            Console.WriteLine($"{Name} начинает игру: {gameTitle}.");
+        }
+        else
+        {
+            Console.WriteLine($"{Name} выключен, невозможно начать игру.");
+        }
+    }
+
     public override void DisplayStatus()
     {
         base.DisplayStatus();
@@ -121,10 +143,12 @@ public class Television : Device
 public class SmartLock : Device
 {
     public bool IsLocked { get; set; }
+    public string Password { get; set; }
 
-    public SmartLock(string name) : base(name)
+    public SmartLock(string name, string passcode) : base(name)
     {
         IsLocked = true; // Изначально замок закрыт
+        SetPassword(passcode);
     }
 
     public void Lock()
@@ -139,71 +163,57 @@ public class SmartLock : Device
         Console.WriteLine($"{Name} замок открыт");
     }
 
+    public void ToggleLock()
+    {
+        if (!IsLocked)
+        {
+            Unlock();
+        }
+        else
+        {
+            Lock();
+        }
+    }
+
+    public void SetPassword(string newPassword)
+    {
+        if (ValidatePassword(newPassword) == true)
+        {
+            Password = newPassword;
+            Console.WriteLine($"{Name} пароль установлен");
+            ToggleLock();
+        }
+    }
+
+    public void UnlockWithPassword(string enteredPassword)
+    {
+        Console.Write($"Введите пароль для открытия {Name}: ");
+
+        if (ValidatePassword(enteredPassword) == true)
+        {
+            ToggleLock();
+        }
+        else
+        {
+            Console.WriteLine("Неверный пароль. Доступ запрещен.");
+        }
+    }
+
+    private bool ValidatePassword(string inputPassword)
+    {
+        bool isPasswordValid = Password.Equals(inputPassword) && inputPassword.Length >= 8;
+
+        if (!isPasswordValid)
+        {
+            Console.WriteLine("Неверный формат пароля. Пароль должен быть не менее 8 символов.");
+        }
+
+        return isPasswordValid;
+    }
+
     public override void DisplayStatus()
     {
         base.DisplayStatus();
         Console.WriteLine($"{Name} замок: {(IsLocked ? "закрыт" : "открыт")}");
     }
 }
-
-/*public class Toilet : Device // туелет  юбхщл 
-{
-    public Toilet(string name) : base(name)
-    {
-    }
-    public void Flush()
-    {
-        Console.WriteLine($"{Name} - Спуск воды.");
-    }
-    public void WashBottom()
-    {
-        Console.WriteLine($"{Name} - Мойка 5 точки.");
-    }
-
-}*/ // Туалет класс
-
-/*public class Dishwasher : Device
-{
-    public Dishwasher(string name) : base(name)
-    {
-    }
-
-    public void Start()
-    {
-        Console.WriteLine($"{Name} - Запуск посудомоечной машины.");
-    }
-
-    public void Stop()
-    {
-        Console.WriteLine($"{Name} - Остановка посудомоечной машины.");
-    }
-}*/ //Dishwasher
-// Класс для представления посудомоечной машины
-/*public class WashingMachine : Device
-{
-    public WashingMachine(string name) : base(name)
-    {
-    }
-
-    public void Start()
-    {
-        Console.WriteLine($"{Name} - Запуск стиральной машины.");
-    }
-
-    public void Stop()
-    {
-        Console.WriteLine($"{Name} - Остановка стиральной машины.");
-    }
-}*/ //WashingMachine
-/*public class Kettle : Device
-{
-    public Kettle(string name) : base(name)
-    {
-    }
-
-    public void BoilWater()
-    {
-        Console.WriteLine($"{Name} - Кипячение воды.");
-    }
-}*/ //Kettle
-

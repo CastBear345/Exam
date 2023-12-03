@@ -21,5 +21,9 @@ public class Thermostat : Device
         Temperature = newTemperature;
         Console.WriteLine($"{Name} температура установлена на {Temperature} градусов Цельсия");
     }
-}
 
+    public void VacationMode()
+    {
+        Console.WriteLine($"{Name} включен режим отпуска для энергосбережения.");
+    }
+}
