@@ -106,7 +106,7 @@ internal class Menu
 
             if (keyInfo.Key == ConsoleKey.Enter)
             {
-                if (rooms.Devices[3] is SmartLock)
+                if (rooms.Devices.Count > 3 && rooms.Devices[3] is SmartLock)
                 {// Проверка на существование зомка в комнате
                     if (rooms.Devices[3].IsLocked == false) // Проверка открыт ли замок к комнате
                     {
@@ -143,7 +143,7 @@ internal class Menu
 
         Console.ForegroundColor = ConsoleColor.Yellow;
         Console.WriteLine("╔════════════════════╗");
-        Console.WriteLine($"║       {name}      ║");
+        Console.WriteLine($"║  {name} ║");
         Console.WriteLine("╚════════════════════╝");
         Console.ForegroundColor = ConsoleColor.White;
         Console.BackgroundColor = ConsoleColor.Black;
