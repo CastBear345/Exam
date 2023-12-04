@@ -16,7 +16,7 @@ public class Toilet : Device
     public void WashBottom()
     {
         ConsoleColors.SetYellowConsoleColor();
-        Console.WriteLine($"{Name} - Мойка 5 точек.");
+        Console.WriteLine($"{Name} - Мойка 5той точки.");
     }
 
     public void UseToilet()
