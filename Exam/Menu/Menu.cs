@@ -45,46 +45,17 @@ internal class Menu
 
         Console.Clear();
 
-        // Выводим приветствие
-        ConsoleColors.SetBlueConsoleColor();
-        Console.WriteLine("Панель управления Умным Домом");
-
         // Главный цикл управления
-        while (true)
+        for (int i = 0; i < rooms.Count; i++)
         {
-            ConsoleColors.SetGreenConsoleColor();
-            Console.WriteLine("\nВыберите комнату для управления:");
-            for (int i = 0; i < rooms.Count; i++)// Выводится список комнат
-            {
-                ConsoleColors.SetYellowConsoleColor();
-                Console.WriteLine($"{i + 1}. {rooms[i].Name}");
-            }
-            ConsoleColors.SetRedConsoleColor();
-            Console.WriteLine($"{rooms.Count + 1}. Выход");
-            ConsoleColors.SetYellowConsoleColor();
+            // Выводим приветствие
+            ConsoleColors.SetBlueConsoleColor();
+            ShowMenu(rooms[i]);
 
             int roomChoice;
             if (int.TryParse(Console.ReadLine(), out roomChoice) && roomChoice >= 1 && roomChoice <= rooms.Count)// Проверка существует ли введенная комната
             {
-                if (rooms[roomChoice - 1].Devices[3 - 1] is SmartLock)
-                {// Проверка на существование зомка в комнате
-                    if (rooms[roomChoice - 1].Devices[3 - 1].IsLocked == false) // Проверка открыт ли замок к комнате
-                    {
-                        ControlRooms.ControlRoom(rooms[roomChoice - 1]);
-                    }
-                    else
-                    {
-                        ConsoleColors.SetRedConsoleColor();
-                        ConsoleColors.SetYellowConsoleColor();
-                        Console.WriteLine("Замок в этой комнате закрыт.");
-                        Console.WriteLine("Введите пароль чтобы войти: ");
-                        EditDevicesParameters.EditDeviceParameters(rooms[roomChoice - 1].Devices[3 - 1]);
-                    }
-                }
-                else
-                {
-                    ControlRooms.ControlRoom(rooms[roomChoice - 1]);
-                }
+
             }
             else if (roomChoice == rooms.Count + 1)
             {
@@ -98,5 +69,84 @@ internal class Menu
                 Console.WriteLine("Неверный выбор. Введите корректное число.");
             }
         }
+    }
+
+    public static void ShowMenu(Room rooms)
+    {
+        ConsoleKeyInfo keyInfo;
+        List<MenuHelpers> options = MenuHelpers.options;
+        int number = 0;
+
+
+        do
+        {
+            PrintFirst("Панель управления");
+
+
+
+            for (int NumberCinema = 0; NumberCinema < options.Count; NumberCinema++)
+            {
+
+                if (NumberCinema == number)
+                {
+                    Console.ForegroundColor = ConsoleColor.Black;
+                    Console.BackgroundColor = ConsoleColor.White;
+                }
+                Console.WriteLine(options[NumberCinema].Title);
+
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.BackgroundColor = ConsoleColor.Black;
+            }
+
+            keyInfo = Console.ReadKey(true);
+
+            if (keyInfo.Key == ConsoleKey.UpArrow) { number = (number - 1 + options.Count()) % options.Count(); }
+            if (keyInfo.Key == ConsoleKey.DownArrow) { number = (number + 1) % options.Count(); }
+
+            if (keyInfo.Key == ConsoleKey.Enter)
+            {
+                if (rooms.Devices[3] is SmartLock)
+                {// Проверка на существование зомка в комнате
+                    if (rooms.Devices[3].IsLocked == false) // Проверка открыт ли замок к комнате
+                    {
+                        ControlRooms.ControlRoom(rooms);
+                    }
+                    else
+                    {
+                        ConsoleColors.SetRedConsoleColor();
+                        ConsoleColors.SetYellowConsoleColor();
+                        Console.WriteLine("Замок в этой комнате закрыт.");
+                        Console.WriteLine("Введите пароль чтобы войти: ");
+                        EditDevicesParameters.EditDeviceParameters(rooms.Devices[3 - 1]);
+                    }
+                }
+                else
+                {
+                    ControlRooms.ControlRoom(rooms);
+                }
+            }
+
+        } while (keyInfo.Key != ConsoleKey.Escape);
+
+
+
+    }
+
+
+
+
+
+    public static void PrintFirst(string? name)
+    {
+        Console.Clear();
+
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine("╔════════════════════╗");
+        Console.WriteLine($"║       {name}      ║");
+        Console.WriteLine("╚════════════════════╝");
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.BackgroundColor = ConsoleColor.Black;
+
+        Console.WriteLine();
     }
 }
