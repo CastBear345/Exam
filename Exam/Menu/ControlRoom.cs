@@ -10,41 +10,38 @@ public class ControlRooms
     // Метод для управления комнатой
     public static void ControlRoom(Room room)
     {
+        ConsoleKeyInfo keyInfo;
+        int number = 0;
         while (true)
         {
-            Console.Clear();
-            ConsoleColors.SetBlueConsoleColor();
-            Console.WriteLine($"\nУправление комнатой {room.Name}");
-            ControlRoomsImages.ControlRoomImage(room);// Создает рисунок комнаты
-            Console.WriteLine("");
-            ConsoleColors.SetGreenConsoleColor();
-            Console.WriteLine("Выберите устройство для управления:");
-
-            for (int i = 0; i < room.Devices.Count; i++)// Выводится список доступных устройств в этой комнате
-            {
-                ConsoleColors.SetYellowConsoleColor();
-                Console.WriteLine($"{i + 1}. {room.Devices[i].Name}");
-            }
-            ConsoleColors.SetRedConsoleColor();
-            Console.WriteLine($"{room.Devices.Count + 1}. Назад");
-            ConsoleColors.SetYellowConsoleColor();
-
-            if (int.TryParse(Console.ReadLine(), out int deviceChoice) && deviceChoice >= 1 && deviceChoice <= room.Devices.Count)// Выбор комнаты
-            {
-                ControlDevices.ControlDevice(room.Devices[deviceChoice - 1]);
-            }
-            else if (deviceChoice == room.Devices.Count + 1)
+            do
             {
                 Console.Clear();
-                ConsoleColors.SetOrangeConsoleColor();
-                Console.WriteLine("Возврат к выбору комнаты.");
-                break;
-            }
-            else
-            {
-                ConsoleColors.SetRedConsoleColor();
-                Console.WriteLine("Неверный выбор. Введите корректное число.");
-            }
+                Menu.PrintFirst($"Управление комнатой {room.Name}");
+                ControlRoomsImages.ControlRoomImage(room);// Создает рисунок комнаты
+                Menu.PrintFirst("Выберите устройство для управления:");
+                for (int i = 0; i < room.Devices.Count; i++)// Выводится список доступных устройств в этой комнате
+                {
+                    if (i == number)
+                    {
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.BackgroundColor = ConsoleColor.Gray;
+                    }
+                    ConsoleColors.SetYellowConsoleColor();
+                    Menu.PrintFirst($"{room.Devices[i].Name}");
+                }
+                Menu.PrintFirst("Назад");
+                keyInfo = Console.ReadKey(true);
+
+                if (keyInfo.Key == ConsoleKey.UpArrow) { number = (number - 1 + room.Devices.Count()) % room.Devices.Count(); }
+                if (keyInfo.Key == ConsoleKey.DownArrow) { number = (number + 1) % room.Devices.Count(); }
+
+                if (keyInfo.Key == ConsoleKey.Enter)
+                {
+                    ControlDevices.ControlDevice(room.Devices[number]);
+                }
+
+            } while (keyInfo.Key != ConsoleKey.Escape);
         }
     }
 }

@@ -25,6 +25,7 @@ public class EditDevicesParameters
             int choice;
             if (int.TryParse(Console.ReadLine(), out choice))
             {
+                Console.Clear();
                 switch (choice)
                 {
                     case 1:
@@ -121,6 +122,7 @@ public class EditDevicesParameters
             int choice;
             if (int.TryParse(Console.ReadLine(), out choice))
             {
+                Console.Clear();
                 int newHours, newMinute;
                 switch (choice)
                 {
@@ -196,6 +198,7 @@ public class EditDevicesParameters
             int choice;
             if (int.TryParse(Console.ReadLine(), out choice))
             {
+                Console.Clear();
                 int password;
                 switch (choice)
                 {

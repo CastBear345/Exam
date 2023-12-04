@@ -14,5 +14,21 @@ public class ControlRoomsImages
         {
             LivingRoom.GetLivingRoom(1, true);
         }
+        else if (room.Name is "Спальня")
+        {
+            BedRoom.GetBedRoom(1, true);
+        }
+        else if (room.Name is "Ванная")
+        {
+            BathRoom.GetBathRoom(1, true);
+        }
+        else if (room.Name is "Кухня")
+        {
+            Kitchen.GetKitchen(1, true);
+        }
+        else if (room.Name is "Детская")
+        {
+            ChildrensRoom.GetChildrensRoom(1, true);
+        }
     }
 }

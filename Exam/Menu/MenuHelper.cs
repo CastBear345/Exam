@@ -5,120 +5,48 @@ using System.Xml.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public class  MenuHelpers
+public class  MenuHelper
 {
-    public static List<MenuHelpers> options = new List<MenuHelpers>()        {
 
-            new MenuHelpers()
-            {
-                Title ="╔════════════════════╗\n" +
-                       "║       Гостиная     ║\n" +
-                       "╚════════════════════╝",
-            },
-            new MenuHelpers()
-            {
-                Title = "╔════════════════════╗\n" +
-                        "║       Спальня      ║\n" +
-                        "╚════════════════════╝",
-            },
-            new MenuHelpers()
-            {
-                Title = "╔════════════════════╗\n" +
-                        "║       Ванная       ║\n" +
-                        "╚════════════════════╝",
+    // Создаем список комнат
+    public static List<Room> rooms;
 
-            },
-            new MenuHelpers()
-            {
-                Title = "╔════════════════════╗\n" +
-                        "║        Кухня       ║\n" +
-                        "╚════════════════════╝",
+    // Статический конструктор
+    public static List<Room> CreateRoom()
+    {
+        rooms = new List<Room>
+        {
+            new Room("Гостиная"),
+            new Room("Спальня"),
+            new Room("Ванная"),
+            new Room("Кухня"),
+            new Room("Детская")
+        };
 
-            },
-            new MenuHelpers()
-            {
-                Title = "╔════════════════════╗\n" +
-                        "║       Детская      ║\n" +
-                        "╚════════════════════╝",
+        // Добавляем устройства (лампы, термостаты) в каждую комнату
+        rooms[0].AddDevice(new Lamp("Лампа в гостиной"));
+        rooms[0].AddDevice(new Thermostat("Термостат в гостиной"));
+        rooms[0].AddDevice(new Television("Телевизор в гостиной"));
 
-            },
-            new MenuHelpers()
-            {
-                Title = "╔════════════════════╗\n" +
-                        "║       Выйти        ║\n" +
-                        "╚════════════════════╝\n",
-            },
-    };
+        rooms[1].AddDevice(new Lamp("Лампа в спальне"));
+        rooms[1].AddDevice(new Thermostat("Термостат в спальне"));
+        rooms[1].AddDevice(new SmartLock("Замок в спальне", "12345"));
+        rooms[1].AddDevice(new AlarmClock("Будильник в спальне"));
 
-    public static List<MenuHelpers> devices = new List<MenuHelpers>()        {
+        rooms[2].AddDevice(new Lamp("Лампа в ванной"));
+        rooms[2].AddDevice(new Thermostat("Термостат в ванной"));
+        rooms[2].AddDevice(new Toilet("Унитаз в ванной")); //Унитаз
+        rooms[2].AddDevice(new WashingMachine("Стиральная машина в ванной"));// стиралка
 
-            new MenuHelpers()
-            {
-                Title ="╔════════════════════╗\n" +
-                       "║        Лампа       ║\n" +
-                       "╚════════════════════╝",
-            },
-            new MenuHelpers()
-            {
-                Title = "╔════════════════════╗\n" +
-                        "║       Термостат    ║\n" +
-                        "╚════════════════════╝",
-            },
-            new MenuHelpers()
-            {
-                Title = "╔════════════════════╗\n" +
-                        "║        Замок       ║\n" +
-                        "╚════════════════════╝",
+        rooms[3].AddDevice(new Lamp("Лампа в Кухне"));
+        rooms[3].AddDevice(new Thermostat("Термостат в Кухне"));
+        rooms[3].AddDevice(new Dishwasher("Посудомойка в Кухне"));//Посудамойка
+        rooms[3].AddDevice(new Kettle("Чайник в Кухне")); // Добавление чайника
 
-            },
-            new MenuHelpers()
-            {
-                Title = "╔════════════════════╗\n" +
-                        "║      Телевизор     ║\n" +
-                        "╚════════════════════╝",
+        rooms[4].AddDevice(new Lamp("Лампа в Детской"));
+        rooms[4].AddDevice(new Thermostat("Термостат в Детской"));
+        rooms[4].AddDevice(new SmartLock("Замок в Детской", "12345"));
 
-            },
-            new MenuHelpers()
-            {
-                Title = "╔════════════════════╗\n" +
-                        "║      Будильник     ║\n" +
-                        "╚════════════════════╝",
-
-            },
-            new MenuHelpers()
-            {
-                Title = "╔════════════════════╗\n" +
-                        "║  Стиральная машина ║\n" +
-                        "╚════════════════════╝",
-            },
-            new MenuHelpers()
-            {
-                Title = "╔════════════════════╗\n" +
-                        "║       Унитаз       ║\n" +
-                        "╚════════════════════╝",
-
-            },
-            new MenuHelpers()
-            {
-                Title = "╔════════════════════╗\n" +
-                        "║      Посудомойка   ║\n" +
-                        "╚════════════════════╝",
-
-            },
-            new MenuHelpers()
-            {
-                Title = "╔════════════════════╗\n" +
-                        "║        Чайник      ║\n" +
-                        "╚════════════════════╝",
-
-            },
-            new MenuHelpers()
-            {
-                Title = "╔════════════════════╗\n" +
-                        "║        Выйти       ║\n" +
-                        "╚════════════════════╝\n",
-            },
-    };
-
-    public string Title { get; set; }
+        return rooms;
+    }
 }

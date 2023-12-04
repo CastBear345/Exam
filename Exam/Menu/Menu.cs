@@ -9,91 +9,33 @@ internal class Menu
 {
     public static void Start()
     {
-        // Создаем список комнат
-        List<Room> rooms = new List<Room>
-        {
-            new Room("Гостиная"),
-            new Room("Спальня"),
-            new Room("Ванная"),
-            new Room("Кухня"),
-            new Room("Детская")
-        };
 
-        // Добавляем устройства (лампы, термостаты) в каждую комнату
-        rooms[0].AddDevice(new Lamp("Лампа в гостиной"));
-        rooms[0].AddDevice(new Thermostat("Термостат в гостиной"));
-        rooms[0].AddDevice(new Television("Телевизор в гостиной"));
+        List<Room> rooms = MenuHelper.CreateRoom();
+        ShowMenu(rooms);
 
-        rooms[1].AddDevice(new Lamp("Лампа в спальне"));
-        rooms[1].AddDevice(new Thermostat("Термостат в спальне"));
-        rooms[1].AddDevice(new SmartLock("Замок в спальне", "12345"));
-        rooms[1].AddDevice(new AlarmClock("Будильник в спальне"));
-
-        rooms[2].AddDevice(new Lamp("Лампа в ванной"));
-        rooms[2].AddDevice(new Thermostat("Термостат в ванной"));
-        rooms[2].AddDevice(new Toilet("Унитаз в ванной")); //Унитаз
-        rooms[2].AddDevice(new WashingMachine("Стиральная машина в ванной"));// стиралка
-
-        rooms[3].AddDevice(new Lamp("Лампа в Кухне"));
-        rooms[3].AddDevice(new Thermostat("Термостат в Кухне"));
-        rooms[3].AddDevice(new Dishwasher("Посудомойка в Кухне"));//Посудамойка
-        rooms[3].AddDevice(new Kettle("Чайник в Кухне")); // Добавление чайника
-
-        rooms[4].AddDevice(new Lamp("Лампа в Детской"));
-        rooms[4].AddDevice(new Thermostat("Термостат в Детской"));
-        rooms[4].AddDevice(new SmartLock("Замок в Детской", "12345"));
-
-        Console.Clear();
-
-        // Главный цикл управления
-        for (int i = 0; i < rooms.Count; i++)
-        {
-            // Выводим приветствие
-            ConsoleColors.SetBlueConsoleColor();
-            ShowMenu(rooms[i]);
-
-            int roomChoice;
-            if (int.TryParse(Console.ReadLine(), out roomChoice) && roomChoice >= 1 && roomChoice <= rooms.Count)// Проверка существует ли введенная комната
-            {
-
-            }
-            else if (roomChoice == rooms.Count + 1)
-            {
-                ConsoleColors.SetOrangeConsoleColor();
-                Console.WriteLine("Выход из Панели управления Умным Домом. До свидания!");
-                break;
-            }
-            else
-            {
-                ConsoleColors.SetRedConsoleColor();
-                Console.Clear();
-                Console.WriteLine("Неверный выбор. Введите корректное число.");
-            }
-        }
     }
 
-    public static void ShowMenu(Room rooms)
+    public static void ShowMenu(List<Room> rooms)
     {
-        ConsoleKeyInfo keyInfo;
-        List<MenuHelpers> options = MenuHelpers.options;
-        int number = 0;
 
+        ConsoleKeyInfo keyInfo;
+        int number = 0;
 
         do
         {
+            Console.Clear();
             PrintFirst("Панель управления");
 
-
-
-            for (int NumberCinema = 0; NumberCinema < options.Count; NumberCinema++)
+            for (int NumberCinema = 0; NumberCinema < rooms.Count; NumberCinema++)
             {
 
                 if (NumberCinema == number)
                 {
-                    Console.ForegroundColor = ConsoleColor.Black;
-                    Console.BackgroundColor = ConsoleColor.White;
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.BackgroundColor = ConsoleColor.Gray;
                 }
-                Console.WriteLine(options[NumberCinema].Title);
+                PrintFirst(rooms[NumberCinema].Name);
+                Console.WriteLine();
 
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.BackgroundColor = ConsoleColor.Black;
@@ -101,51 +43,42 @@ internal class Menu
 
             keyInfo = Console.ReadKey(true);
 
-            if (keyInfo.Key == ConsoleKey.UpArrow) { number = (number - 1 + options.Count()) % options.Count(); }
-            if (keyInfo.Key == ConsoleKey.DownArrow) { number = (number + 1) % options.Count(); }
+            if (keyInfo.Key == ConsoleKey.UpArrow) { number = (number - 1 + rooms.Count()) % rooms.Count(); }
+            if (keyInfo.Key == ConsoleKey.DownArrow) { number = (number + 1) % rooms.Count(); }
 
             if (keyInfo.Key == ConsoleKey.Enter)
             {
-                if (rooms.Devices.Count > 3 && rooms.Devices[3] is SmartLock)
+                if (rooms[number].Devices[2] is SmartLock)
                 {// Проверка на существование зомка в комнате
-                    if (rooms.Devices[3].IsLocked == false) // Проверка открыт ли замок к комнате
+                    if (rooms[number].Devices[2].IsLocked == false) // Проверка открыт ли замок к комнате
                     {
-                        ControlRooms.ControlRoom(rooms);
+                        ControlRooms.ControlRoom(rooms[number]);
                     }
                     else
                     {
+                        Console.Clear();
                         ConsoleColors.SetRedConsoleColor();
                         ConsoleColors.SetYellowConsoleColor();
-                        Console.WriteLine("Замок в этой комнате закрыт.");
-                        Console.WriteLine("Введите пароль чтобы войти: ");
-                        EditDevicesParameters.EditDeviceParameters(rooms.Devices[3 - 1]);
+                        EditDevicesParameters.EditDeviceParameters(rooms[number].Devices[2]);
                     }
                 }
                 else
                 {
-                    ControlRooms.ControlRoom(rooms);
+                    ControlRooms.ControlRoom(rooms[number]);
                 }
             }
 
         } while (keyInfo.Key != ConsoleKey.Escape);
 
-
-
     }
-
-
-
-
 
     public static void PrintFirst(string? name)
     {
-        Console.Clear();
 
         Console.ForegroundColor = ConsoleColor.Yellow;
         Console.WriteLine("╔════════════════════╗");
-        Console.WriteLine($"║  {name} ║");
+        Console.WriteLine($"{name} ");
         Console.WriteLine("╚════════════════════╝");
-        Console.ForegroundColor = ConsoleColor.White;
         Console.BackgroundColor = ConsoleColor.Black;
 
         Console.WriteLine();
