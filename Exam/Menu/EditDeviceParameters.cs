@@ -270,7 +270,7 @@ public class EditDevicesParameters
         // Ждем, чтобы пользователь мог увидеть результат изменения параметров
         ConsoleColors.SetOrangeConsoleColor();
         Console.Clear();
-        Console.WriteLine("\nНажмите Enter, чтобы продолжить...");
+        Console.WriteLine("\nНажмите Enter для проделжения!");
         Console.ReadLine();
     }
 }

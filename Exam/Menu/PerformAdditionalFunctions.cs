@@ -146,7 +146,7 @@ public class PerformAdditionalFunctionss
                         break;
                     case 2:
                         ConsoleColors.SetOrangeConsoleColor();
-                        Console.Clear();
+                        //Console.Clear();
                         Console.WriteLine("Возврат к выбору действия.");
                         break;
                     default:
@@ -180,7 +180,7 @@ public class PerformAdditionalFunctionss
                         break;
                     case 2:
                         ConsoleColors.SetOrangeConsoleColor();
-                        Console.Clear();
+                        //Console.Clear();
                         Console.WriteLine("Возврат к выбору действия.");
                         break;
                     default:
