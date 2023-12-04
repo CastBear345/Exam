@@ -13,52 +13,79 @@ public class ControlDevices
         while (true)
         {
             Console.Clear();
-            device.DisplayStatus();
-
-            ConsoleColors.SetGreenConsoleColor();
-            Console.WriteLine("\nВыберите действие:");
-            ConsoleColors.SetYellowConsoleColor();
-            Console.WriteLine("1. Включить");
-            Console.WriteLine("2. Выключить");
-            Console.WriteLine("3. Изменить параметры");
-            Console.WriteLine("4. Дополнительные функции");
-            ConsoleColors.SetRedConsoleColor();
-            Console.WriteLine("5. Назад");
-            ConsoleColors.SetYellowConsoleColor();
-
-            int choice;
-            if (int.TryParse(Console.ReadLine(), out choice))
+            List<string> options = new List<string>()
             {
-                switch (choice)
+                "Включить",
+                "Выключить",
+                "Изменить параметры",
+                "Дополнительные функции",
+                "Назад"
+            };
+
+            ConsoleKeyInfo keyInfo;
+            int number = 0;
+
+            do
+            {
+                Console.Clear();
+                device.DisplayStatus();
+                Menu.PrintFirst("Выберите действие:");
+
+                for (int i = 0; i < options.Count; i++)
                 {
-                    case 1:
-                        device.TurnOn();
-                        break;
-                    case 2:
-                        device.TurnOff();
-                        break;
-                    case 3:
-                        EditDevicesParameters.EditDeviceParameters(device);
-                        break;
-                    case 4:
-                        PerformAdditionalFunctionss.PerformAdditionalFunctions(device);
-                        break;
-                    case 5:
-                        ConsoleColors.SetOrangeConsoleColor();
-                        Console.Clear();
-                        Console.WriteLine("Возврат к выбору устройства.");
-                        return;
-                    default:
-                        ConsoleColors.SetRedConsoleColor();
-                        Console.WriteLine("Неверный выбор. Введите корректное число.");
-                        break;
+                    if (i == number)
+                    {
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.BackgroundColor = ConsoleColor.Gray;
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.BackgroundColor = ConsoleColor.Black;
+                    }
+
+                    Menu.PrintFirst($"{options[i]}");
                 }
-            }
-            else
-            {
-                ConsoleColors.SetRedConsoleColor();
-                Console.WriteLine("Неверный ввод. Введите число.");
-            }
+
+                keyInfo = Console.ReadKey(true);
+
+                if (keyInfo.Key == ConsoleKey.UpArrow) { number = (number - 1 + options.Count()) % options.Count(); }
+                if (keyInfo.Key == ConsoleKey.DownArrow) { number = (number + 1) % options.Count(); }
+                int choice = number;
+
+                if (keyInfo.Key == ConsoleKey.Enter)
+                {
+                    switch (choice)
+                    {
+                        case 1:
+                            device.TurnOn();
+                            break;
+                        case 2:
+                            device.TurnOff();
+                            break;
+                        case 3:
+                            EditDevicesParameters.EditDeviceParameters(device);
+                            break;
+                        case 4:
+                            PerformAdditionalFunctionss.PerformAdditionalFunctions(device);
+                            break;
+                        case 5:
+                            ConsoleColors.SetOrangeConsoleColor();
+                            Console.Clear();
+                            Menu.PrintFirst("Возврат к выбору устройства.");
+                            // Используйте break для выхода из обоих циклов
+                            return;
+                    }
+                }
+
+                // Вернуть цветовую схему к стандартной после вывода списка
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.BackgroundColor = ConsoleColor.Black;
+
+                // Проверка клавиши Escape для выхода из обоих циклов
+            } while (keyInfo.Key != ConsoleKey.Escape);
+
+            break; // Выход из внешнего цикла
         }
     }
 }

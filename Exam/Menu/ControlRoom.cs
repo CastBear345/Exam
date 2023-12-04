@@ -30,7 +30,7 @@ public class ControlRooms
                     ConsoleColors.SetYellowConsoleColor();
                     Menu.PrintFirst($"{room.Devices[i].Name}");
                 }
-                Menu.PrintFirst("Назад");
+                Menu.PrintFirst("Назад"); //нужно доработать
                 keyInfo = Console.ReadKey(true);
 
                 if (keyInfo.Key == ConsoleKey.UpArrow) { number = (number - 1 + room.Devices.Count()) % room.Devices.Count(); }
