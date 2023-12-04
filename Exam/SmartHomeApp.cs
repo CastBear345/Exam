@@ -102,6 +102,7 @@ internal class SmartHomeApp
             Console.Clear();
             ConsoleColors.SetBlueConsoleColor();
             Console.WriteLine($"\nУправление комнатой {room.Name}");
+            ControlRoomImage(room);
             Console.WriteLine("");
             ConsoleColors.SetGreenConsoleColor();
             Console.WriteLine("Выберите устройство для управления:");
@@ -139,7 +140,7 @@ internal class SmartHomeApp
         {
             Console.Clear();
             device.DisplayStatus();
-
+   
             ConsoleColors.SetGreenConsoleColor();
             Console.WriteLine("\nВыберите действие:");
             ConsoleColors.SetYellowConsoleColor();
@@ -187,6 +188,14 @@ internal class SmartHomeApp
                 ConsoleColors.SetRedConsoleColor();
                 Console.WriteLine("Неверный ввод. Введите число.");
             }
+        }
+    }
+
+    static void ControlRoomImage(Room room)
+    {
+        if (room.Name is "Гостиная")
+        {
+            LivingRoom.GetLivingRoom(1, true);
         }
     }
 
@@ -309,13 +318,13 @@ internal class SmartHomeApp
                         Console.Write("Введите сначала часы: ");
                         if (int.TryParse(Console.ReadLine(), out newHours))
                         {
-                            if (newHours >= 0 && 24 <= newHours)
+                            if (newHours > -1 && 25 > newHours)
                             {
                                 ConsoleColors.SetOrangeConsoleColor();
                                 Console.Write("Теперь введите минуты: ");
                                 if (int.TryParse(Console.ReadLine(), out newMinute))
                                 {
-                                    if (newMinute >= 0 && 59 <= newMinute)
+                                    if (newMinute > -1 && 59 > newMinute)
                                     {
                                         string newTime = newHours.ToString() + ":" + newMinute.ToString();
                                         ((AlarmClock)device).ChangeAlarmTime(newTime);
@@ -387,9 +396,8 @@ internal class SmartHomeApp
                             Console.WriteLine(movies[j]);
                         }
                         ch = Console.ReadLine();
-                        if (ch is int)
+                        if (int.TryParse(ch, out i))
                         {
-                            i = int.Parse(ch);
                             if (i > movies.Count)
                             {
                                 ConsoleColors.SetYellowConsoleColor();
@@ -409,9 +417,8 @@ internal class SmartHomeApp
                             Console.WriteLine(games[j]);
                         }
                         ch = Console.ReadLine();
-                        if (ch is int)
+                        if (int.TryParse(ch, out i))
                         {
-                            i = int.Parse(ch);
                             if (i > games.Count)
                             {
                                 ConsoleColors.SetYellowConsoleColor();
@@ -475,6 +482,7 @@ internal class SmartHomeApp
                         else
                         {
                             ConsoleColors.SetOrangeConsoleColor();
+                            Console.Write("Замок в комнате закрыт.");
                             Console.Write("Введите пароль: ");
                             if (int.TryParse(Console.ReadLine(), out password))
                             {

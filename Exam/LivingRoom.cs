@@ -75,7 +75,7 @@ using System.IO;
                     }
                     if (map[x, y] == '█')
                     {
-                        Console.ForegroundColor = ConsoleColor.DarkGreen;
+                        Console.ForegroundColor = ConsoleColor.DarkGray;
                     }
                          Console.Write(map[x, y]);
                     Console.ForegroundColor = ConsoleColor.White;
