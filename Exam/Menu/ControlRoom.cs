@@ -35,6 +35,7 @@ public class ControlRooms
             }
             else if (deviceChoice == room.Devices.Count + 1)
             {
+                Console.Clear();
                 ConsoleColors.SetOrangeConsoleColor();
                 Console.WriteLine("Возврат к выбору комнаты.");
                 break;
