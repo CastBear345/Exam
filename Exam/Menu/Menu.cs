@@ -66,6 +66,7 @@ internal class Menu
             else
             {
                 ConsoleColors.SetRedConsoleColor();
+                Console.Clear();
                 Console.WriteLine("Неверный выбор. Введите корректное число.");
             }
         }
