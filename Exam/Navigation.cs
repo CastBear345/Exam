@@ -42,7 +42,7 @@ using System.Threading.Tasks;
                     Console.BackgroundColor = ConsoleColor.White;
                     Console.WriteLine(rasd.sectionName);
 
-                }
+            }
                 else
                 {
                     Console.WriteLine(rasd.sectionName);
@@ -98,33 +98,5 @@ using System.Threading.Tasks;
             );
 
             Console.ReadKey();
-
-            
-
-
         }
-       
-        //public static int Indexer( int index)
-        //{
-        //    return index;
-        //}
-
-        public static int inputIndex { get; set; }  
-        public static void Greetings()
-        {
-            Console.ForegroundColor = ConsoleColor.Black;
-            Console.BackgroundColor = ConsoleColor.White;
-            string Greting = "████████████████████████████████████████\n████████████▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█████████\n█████▀▀░░░░░░░░░░░░░░░░░░░░░░░░░▀███████\r\n████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░██████\r\n███▀░░░░░▄▄▄░░░░░░░░▄▄▀███▄▄░░░░░░░█████\r\n██░░░░░░▀▀▀███▄▄░░░█▄▄█▀█▀▀▀▀░▀░▄▄░▀▀███\r\n█░░▄▄░▄▄░▄░░░█▀░░░░░░░░░░▀▄▄▄█▀▀▄░▀█░░▀█\r\n█░░░░▄░▀▀░░▄█▀░░░░░░▄▄░░░░░░░▄▄▀██▄░█░░█\r\n██░░░██░░░▀▀█▄░░░▀▀▀▄▀░▄▄▄███▀░▄█░░░▀░▄█\r\n██▄░██▀█▀▄▄▄▄▄█▄▄▄▄▄▀▀█▀░░▄███▀█▀░░░▄▄██\r\n███░████▄█▄░░█░░▄█░░▄▄███▀▀▀█▄▀░░░░▄████\r\n███░▀██████████████▀▀▀▀█░░░▄▀▀░░░░▄█████\r\n███░░██▀█▀██▀█▀░░▀█░░░░█▄█▀░░░░░▄███████\r\n███░░░░▀▀▀██▄██▄▄██▀▀▀▀▀░░░░░▄▄█████████\r\n██▀░░░░░░░░░░░░░░░░░░░░░░▄▄▄████████████\r\n██▄░░░░░░░░░░░░░░░░░░▄▄█████████████████\r\n████▄░░░░░░░░░▄▄▄▄▄█████████████████████\r\n████████████████████████████████████████";
-             Console.WriteLine(Greting);
-            
-            Console.WriteLine(" Добро пожаловать в онлайн Кинотеатр ");
-            Thread.Sleep(3000);  
-            Console.Clear();
-            Console.ResetColor();
-        }
-        
-       
-
-
     }
-

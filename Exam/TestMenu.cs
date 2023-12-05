@@ -20,31 +20,35 @@ internal class TestMenu
                         new MenuSection
                         {
                              sectionName = "╔════════════════════╗\n" +
-                                           "|        кухня       |\n"+
-                                           "╚════════════════════╝\n"
+                                           "|        Кухня       |\n"+
+                                           "╚════════════════════╝\n",
+                           action = GetKitchenDevise ,
                         },
                         new MenuSection
                         {
                              sectionName = "╔════════════════════╗\n" +
-                                           "|       ванная       |\n"+
-                                           "╚════════════════════╝\n"
+                                           "|       Ванная       |\n"+
+                                           "╚════════════════════╝\n",
+                           action = GetBathRoomDevise ,
                         },
                         new MenuSection
                         {
                                sectionName = "╔════════════════════╗\n" +
-                                             "|      детская       |\n"+
-                                             "╚════════════════════╝\n"
+                                             "|      Детская       |\n"+
+                                             "╚════════════════════╝\n",
+                           action = GetChildrensRoomDevise ,
                         },
                          new MenuSection
                          {
                               sectionName = "╔════════════════════╗\n"+
-                                            "|      спальня       |\n"+
-                                            "╚════════════════════╝\n"
+                                            "|      Спальня       |\n"+
+                                            "╚════════════════════╝\n",
+                           action = GetBedRoomDevise ,
                          },
                            new MenuSection
                            {
                                sectionName = "╔════════════════════╗\n"+
-                                             "|       выход        |\n"+
+                                             "|       Выход        |\n"+
                                              "╚════════════════════╝\n",
                                     action = OnExit
                            }
@@ -56,20 +60,29 @@ internal class TestMenu
           new MenuSection
           {
              sectionName = "╔════════════════════╗\n"+
-                           "|       лампа        |\n"+
-                           "╚════════════════════╝\n"
+                           "|       Лампа        |\n"+
+                           "╚════════════════════╝\n",
+                           action = GetLamp ,
           },
           new MenuSection
           {
              sectionName = "╔════════════════════╗\n"+
-                           "|     телевизор      |\n"+
-                           "╚════════════════════╝\n"
+                           "|     Телевизор      |\n"+
+                           "╚════════════════════╝\n",
+                           action = GetTelevision ,
+          },
+          new MenuSection
+          {
+             sectionName = "╔════════════════════╗\n"+
+                           "|     Термометр      |\n"+
+                           "╚════════════════════╝\n",
+                           action = GetThermostat ,
           },
 
           new MenuSection
           {
              sectionName = "╔════════════════════╗\n"+
-                           "|       выход        |\n"+
+                           "|       Выход        |\n"+
                            "╚════════════════════╝\n",
              action = GetMainMenu,
 
@@ -84,34 +97,38 @@ internal class TestMenu
           new MenuSection
           {
              sectionName = "╔════════════════════╗\n"+
-                           "|       лампа        |\n"+
-                           "╚════════════════════╝\n"
+                           "|       Лампа        |\n"+
+                           "╚════════════════════╝\n",
+                           action = GetLamp ,
           },
           new MenuSection
           {
              sectionName = "╔════════════════════╗\n"+
-                           "|     телевизор      |\n"+
-                           "╚════════════════════╝\n"
+                           "|     Термометр      |\n"+
+                           "╚════════════════════╝\n",
+                           action = GetThermostat ,
           },
            new MenuSection()
            {
               sectionName = "╔════════════════════╗\n" +
-                            "║        Чайник      ║\n" +
-                            "╚════════════════════╝",
+                            "║       Чайник       ║\n" +
+                            "╚════════════════════╝\n",
+                           action = GetKettle ,
 
            },
 
             new MenuSection()
             {
                 sectionName = "╔════════════════════╗\n" +
-                              "║  Стиральная машина ║\n" +
-                              "╚════════════════════╝",
+                              "║Посудомоечная машина║\n" +
+                              "╚════════════════════╝\n",
+                           action = GetDishWasher ,
             },
 
           new MenuSection
           {
              sectionName = "╔════════════════════╗\n"+
-                           "|       выход        |\n"+
+                           "|       Выход        |\n"+
                            "╚════════════════════╝\n",
              action = GetMainMenu,
 
@@ -120,25 +137,35 @@ internal class TestMenu
 
       };
 
-    public static List<MenuSection> BathRoom = new List<MenuSection>()
+    public static List<MenuSection> bathRoom = new List<MenuSection>()
     {
          new MenuSection()
             {
                 sectionName ="╔════════════════════╗\n" +
-                             "║        Лампа       ║\n" +
-                             "╚════════════════════╝",
+                             "║       Лампа        ║\n" +
+                             "╚════════════════════╝\n",
+                action = GetLamp,
+            },
+          new MenuSection()
+            {
+                sectionName = "╔════════════════════╗\n" +
+                              "║     Термометр      ║\n" +
+                              "╚════════════════════╝\n",
+                action = GetThermostat,
             },
           new MenuSection()
             {
                 sectionName = "╔════════════════════╗\n" +
                               "║  Стиральная машина ║\n" +
-                              "╚════════════════════╝",
+                              "╚════════════════════╝\n",
+                action = GetWashingMachine,
             },
            new MenuSection()
             {
                 sectionName = "╔════════════════════╗\n" +
                               "║       Унитаз       ║\n" +
-                              "╚════════════════════╝",
+                              "╚════════════════════╝\n",
+                action = GetToilet,
 
 
             },
@@ -147,6 +174,7 @@ internal class TestMenu
                 sectionName = "╔════════════════════╗\n" +
                               "║        Выйти       ║\n" +
                               "╚════════════════════╝\n",
+                action = GetMainMenu,
             },
 
     };
@@ -156,20 +184,36 @@ internal class TestMenu
           new MenuSection
           {
              sectionName = "╔════════════════════╗\n"+
-                           "|       лампа        |\n"+
-                           "╚════════════════════╝\n"
+                           "|       Лампа        |\n"+
+                           "╚════════════════════╝\n",
+                action = GetLamp,
           },
           new MenuSection
           {
              sectionName = "╔════════════════════╗\n"+
-                           "|     будильник      |\n"+
-                           "╚════════════════════╝\n"
+                           "|     Будильник      |\n"+
+                           "╚════════════════════╝\n",
+                action = GetAlarmLock,
+          },
+          new MenuSection
+          {
+             sectionName = "╔════════════════════╗\n"+
+                           "|       Замок        |\n"+
+                           "╚════════════════════╝\n",
+                action = GetSmartLock,
+          },
+          new MenuSection
+          {
+             sectionName = "╔════════════════════╗\n"+
+                           "|     Термометр      |\n"+
+                           "╚════════════════════╝\n",
+                action = GetThermostat,
           },
 
           new MenuSection
           {
              sectionName = "╔════════════════════╗\n"+
-                           "|       выход        |\n"+
+                           "|       Выход        |\n"+
                            "╚════════════════════╝\n",
              action = GetMainMenu,
 
@@ -183,20 +227,36 @@ internal class TestMenu
           new MenuSection
           {
              sectionName = "╔════════════════════╗\n"+
-                           "|       лампа        |\n"+
-                           "╚════════════════════╝\n"
+                           "|       Лампа        |\n"+
+                           "╚════════════════════╝\n",
+                action = GetLamp,
           },
           new MenuSection
           {
              sectionName = "╔════════════════════╗\n"+
-                           "|      будильник     |\n"+
-                           "╚════════════════════╝\n"
+                           "|      Будильник     |\n"+
+                           "╚════════════════════╝\n",
+                action = GetAlarmLock,
+          },
+          new MenuSection
+          {
+             sectionName = "╔════════════════════╗\n"+
+                           "|       Замок        |\n"+
+                           "╚════════════════════╝\n",
+                action = GetSmartLock,
+          },
+          new MenuSection
+          {
+             sectionName = "╔════════════════════╗\n"+
+                           "|     Термометр      |\n"+
+                           "╚════════════════════╝\n",
+                action = GetThermostat,
           },
 
           new MenuSection
           {
              sectionName = "╔════════════════════╗\n"+
-                           "|       выход        |\n"+
+                           "|       Выход        |\n"+
                            "╚════════════════════╝\n",
              action = GetMainMenu,
 
@@ -205,11 +265,109 @@ internal class TestMenu
 
       };
 
+    public static List<MenuSection> options = new List<MenuSection>(){
+                new MenuSection
+                {
+                   sectionName = "╔════════════════════╗\n"+
+                                 "|      Включить      |\n"+
+                                 "╚════════════════════╝\n",
+                      action = GetLamp,
+                },
+                new MenuSection
+                {
+                   sectionName = "╔════════════════════╗\n" +
+                                 "|      Выключить     |\n" +
+                                 "╚════════════════════╝\n",
+                  action = GetAlarmLock,
+                },
+                new MenuSection
+                {
+                   sectionName = "╔════════════════════╗\n" +
+                                 "| Изменить Параметры |\n" +
+                                 "╚════════════════════╝\n",
+                  action = GetSmartLock,
+                },
+                new MenuSection
+                {
+                   sectionName = "╔════════════════════╗\n" +
+                                 "|    Дополнительно   |\n" +
+                                 "╚════════════════════╝\n",
+                   action = GetThermostat,
+                },
 
+                new MenuSection
+                {
+                   sectionName = "╔════════════════════╗\n" +
+                                 "|       Выход        |\n" +
+                                 "╚════════════════════╝\n",
+                  action = GetMainMenu,
+
+
+                }
+    };
+
+    ////////////////////////////////
     public static void GetLivingRoomDevise()
     {
         Navigation.ListNavigation(TestMenu.livingRoom);
     }
+    public static void GetKitchenDevise()
+    {
+        Navigation.ListNavigation(TestMenu.kitchen);
+    }
+    public static void GetBathRoomDevise()
+    {
+        Navigation.ListNavigation(TestMenu.bathRoom);
+    }
+    public static void GetBedRoomDevise()
+    {
+        Navigation.ListNavigation(TestMenu.bedRoom);
+    }
+    public static void GetChildrensRoomDevise()
+    {
+        Navigation.ListNavigation(TestMenu.childrensRoom);
+    }
+    ////////////////////////////////
+
+    ////////////////////////////////
+    public static void GetLamp()
+    {
+        Navigation.ListNavigation(TestMenu.options);
+    }
+    public static void GetThermostat()
+    {
+        Navigation.ListNavigation(TestMenu.options);
+    }
+    public static void GetTelevision()
+    {
+        Navigation.ListNavigation(TestMenu.options);
+    }
+    public static void GetAlarmLock()
+    {
+        Navigation.ListNavigation(TestMenu.options);
+    }
+    public static void GetKettle()
+    {
+        Navigation.ListNavigation(TestMenu.options);
+    }
+    public static void GetToilet()
+    {
+        Navigation.ListNavigation(TestMenu.options);
+    }
+    public static void GetWashingMachine()
+    {
+        Navigation.ListNavigation(TestMenu.options);
+    }
+    public static void GetDishWasher()
+    {
+        Navigation.ListNavigation(TestMenu.options);
+    }
+    public static void GetSmartLock()
+    {
+        Navigation.ListNavigation(TestMenu.options);
+    }
+    /////////////////////////////////
+
     public static void GetMainMenu()
     {
         Navigation.ListNavigation(TestMenu.testMenu);
@@ -219,10 +377,4 @@ internal class TestMenu
     {
         Environment.Exit(0);
     }
-
-
-
-
-
-
 }

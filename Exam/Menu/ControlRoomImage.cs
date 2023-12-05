@@ -8,25 +8,25 @@ using System.Threading.Tasks;
 public class ControlRoomsImages
 {
     // Метод для работы с прогрузкой изображений комнат
-    public static void ControlRoomImage(Room room)
+    public static void ControlRoomImage(string str)
     {
-        if (room.Name is "Гостиная")
+        if (str == "Гостиная")
         {
             LivingRoom.GetLivingRoomDevice(1, true);
         }
-        else if (room.Name is "Спальня")
+        else if (str == "Спальня")
         {
             BedRoom.GetBedRoom(1, true);
         }
-        else if (room.Name is "Ванная")
+        else if (str == "Ванная")
         {
             BathRoom.GetBathRoom(1, true);
         }
-        else if (room.Name is "Кухня")
+        else if (str == "Кухня")
         {
             Kitchen.GetKitchen(1, true);
         }
-        else if (room.Name is "Детская")
+        else if (str == "Детская")
         {
             ChildrensRoom.GetChildrensRoom(1, true);
         }

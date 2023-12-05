@@ -13,14 +13,10 @@ public class EditDevicesParameters
         if (device is Lamp)
         {
             Console.Clear();
-            ConsoleColors.SetGreenConsoleColor();
             Console.WriteLine("\nВыберите параметр для изменения:");
-            ConsoleColors.SetYellowConsoleColor();
             Console.WriteLine("1. Яркость");
             Console.WriteLine("2. Подсветка Вкл/Выкл");
-            ConsoleColors.SetRedConsoleColor();
             Console.WriteLine("3. Назад");
-            ConsoleColors.SetYellowConsoleColor();
 
             int choice;
             if (int.TryParse(Console.ReadLine(), out choice))

@@ -2,7 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\Exam",
-    "\\Exam\\Rooms"
+    "\\Exam\\Menu"
   ],
+  "SelectedNode": "\\Exam\\Menu\\ControlDevice.cs",
   "PreviewInSolutionExplorer": false
 }
