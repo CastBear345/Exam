@@ -9,21 +9,6 @@ using System.Threading.Tasks;
 
     public class Navigation
     {
-
-        public static void PrintMenuSelect(string name)
-        {
-            string space = "                      ";
-
-            if (name.Length < space.Length )
-            {
-
-                Console.WriteLine("╔════════════════════╗");
-                Console.WriteLine($"{name} ");
-                Console.WriteLine("╚════════════════════╝");
-            }
-
-        }
-        
         public static void SelectMenu(int index, List<MenuSection> select)
         {
 

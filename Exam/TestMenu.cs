@@ -11,45 +11,45 @@ internal class TestMenu
                     {
                         new MenuSection
                         {
-                           sectionName = "╔════════════════════╗\n" +
-                                         "|     Гостинная      |\n"+
-                                         "╚════════════════════╝\n" ,
+                           sectionName = "╔                    ╗\n" +
+                                         "      Гостинная       \n"+
+                                         "╚                    ╝\n" ,
                            action = GetLivingRoomDevise ,
 
                         },
                         new MenuSection
                         {
-                             sectionName = "╔════════════════════╗\n" +
-                                           "|        Кухня       |\n"+
-                                           "╚════════════════════╝\n",
+                             sectionName = "╔                    ╗\n" +
+                                           "         Кухня        \n"+
+                                           "╚                    ╝\n",
                            action = GetKitchenDevise ,
                         },
                         new MenuSection
                         {
-                             sectionName = "╔════════════════════╗\n" +
-                                           "|       Ванная       |\n"+
-                                           "╚════════════════════╝\n",
+                             sectionName = "╔                    ╗\n" +
+                                           "        Ванная        \n"+
+                                           "╚                    ╝\n",
                            action = GetBathRoomDevise ,
                         },
                         new MenuSection
                         {
-                               sectionName = "╔════════════════════╗\n" +
-                                             "|      Детская       |\n"+
-                                             "╚════════════════════╝\n",
+                               sectionName = "╔                    ╗\n" +
+                                             "       Детская        \n"+
+                                             "╚                    ╝\n",
                            action = GetChildrensRoomDevise ,
                         },
                          new MenuSection
                          {
-                              sectionName = "╔════════════════════╗\n"+
-                                            "|      Спальня       |\n"+
-                                            "╚════════════════════╝\n",
+                              sectionName = "╔                    ╗\n"+
+                                            "       Спальня        \n"+
+                                            "╚                    ╝\n",
                            action = GetBedRoomDevise ,
                          },
                            new MenuSection
                            {
-                               sectionName = "╔════════════════════╗\n"+
-                                             "|       Выход        |\n"+
-                                             "╚════════════════════╝\n",
+                               sectionName = "╔                    ╗\n"+
+                                             "        Выход         \n"+
+                                             "╚                    ╝\n",
                                     action = OnExit
                            }
                     };
@@ -59,31 +59,31 @@ internal class TestMenu
       {
           new MenuSection
           {
-             sectionName = "╔════════════════════╗\n"+
-                           "|       Лампа        |\n"+
-                           "╚════════════════════╝\n",
+             sectionName = "╔                    ╗\n"+
+                           "        Лампа         \n"+
+                           "╚                    ╝\n",
                            action = GetLamp ,
           },
           new MenuSection
           {
-             sectionName = "╔════════════════════╗\n"+
-                           "|     Телевизор      |\n"+
-                           "╚════════════════════╝\n",
+             sectionName = "╔                    ╗\n"+
+                           "      Телевизор       \n"+
+                           "╚                    ╝\n",
                            action = GetTelevision ,
           },
           new MenuSection
           {
-             sectionName = "╔════════════════════╗\n"+
-                           "|     Термометр      |\n"+
-                           "╚════════════════════╝\n",
+             sectionName = "╔                    ╗\n"+
+                           "      Термометр       \n"+
+                           "╚                    ╝\n",
                            action = GetThermostat ,
           },
 
           new MenuSection
           {
-             sectionName = "╔════════════════════╗\n"+
-                           "|       Выход        |\n"+
-                           "╚════════════════════╝\n",
+             sectionName = "╔                    ╗\n"+
+                           "        Выход         \n"+
+                           "╚                    ╝\n",
              action = GetMainMenu,
 
 
@@ -96,40 +96,40 @@ internal class TestMenu
       {
           new MenuSection
           {
-             sectionName = "╔════════════════════╗\n"+
-                           "|       Лампа        |\n"+
-                           "╚════════════════════╝\n",
+             sectionName = "╔                    ╗\n"+
+                           "        Лампа         \n"+
+                           "╚                    ╝\n",
                            action = GetLamp ,
           },
           new MenuSection
           {
-             sectionName = "╔════════════════════╗\n"+
-                           "|     Термометр      |\n"+
-                           "╚════════════════════╝\n",
+             sectionName = "╔                    ╗\n"+
+                           "      Термометр       \n"+
+                           "╚                    ╝\n",
                            action = GetThermostat ,
           },
            new MenuSection()
            {
-              sectionName = "╔════════════════════╗\n" +
-                            "║       Чайник       ║\n" +
-                            "╚════════════════════╝\n",
+              sectionName = "╔                    ╗\n" +
+                            "        Чайник        \n" +
+                            "╚                    ╝\n",
                            action = GetKettle ,
 
            },
 
             new MenuSection()
             {
-                sectionName = "╔════════════════════╗\n" +
-                              "║Посудомоечная машина║\n" +
-                              "╚════════════════════╝\n",
+                sectionName = "╔                      ╗\n" +
+                              "  Посудомоечная машина  \n" +
+                              "╚                      ╝\n",
                            action = GetDishWasher ,
             },
 
           new MenuSection
           {
-             sectionName = "╔════════════════════╗\n"+
-                           "|       Выход        |\n"+
-                           "╚════════════════════╝\n",
+             sectionName = "╔                    ╗\n"+
+                           "        Выход         \n"+
+                           "╚                    ╝\n",
              action = GetMainMenu,
 
 
@@ -141,39 +141,39 @@ internal class TestMenu
     {
          new MenuSection()
             {
-                sectionName ="╔════════════════════╗\n" +
-                             "║       Лампа        ║\n" +
-                             "╚════════════════════╝\n",
+                sectionName ="╔                    ╗\n" +
+                             "        Лампа         \n" +
+                             "╚                    ╝\n",
                 action = GetLamp,
             },
           new MenuSection()
             {
-                sectionName = "╔════════════════════╗\n" +
-                              "║     Термометр      ║\n" +
-                              "╚════════════════════╝\n",
+                sectionName = "╔                    ╗\n" +
+                              "      Термометр       \n" +
+                              "╚                    ╝\n",
                 action = GetThermostat,
             },
           new MenuSection()
             {
-                sectionName = "╔════════════════════╗\n" +
-                              "║  Стиральная машина ║\n" +
-                              "╚════════════════════╝\n",
+                sectionName = "╔                    ╗\n" +
+                              "   Стиральная машина  \n" +
+                              "╚                    ╝\n",
                 action = GetWashingMachine,
             },
            new MenuSection()
             {
-                sectionName = "╔════════════════════╗\n" +
-                              "║       Унитаз       ║\n" +
-                              "╚════════════════════╝\n",
+                sectionName = "╔                    ╗\n" +
+                              "        Унитаз        \n" +
+                              "╚                    ╝\n",
                 action = GetToilet,
 
 
             },
             new MenuSection()
             {
-                sectionName = "╔════════════════════╗\n" +
-                              "║        Выйти       ║\n" +
-                              "╚════════════════════╝\n",
+                sectionName = "╔                    ╗\n" +
+                              "         Выйти        \n" +
+                              "╚                    ╝\n",
                 action = GetMainMenu,
             },
 
@@ -183,38 +183,38 @@ internal class TestMenu
       {
           new MenuSection
           {
-             sectionName = "╔════════════════════╗\n"+
-                           "|       Лампа        |\n"+
-                           "╚════════════════════╝\n",
+             sectionName = "╔                    ╗\n"+
+                           "        Лампа         \n"+
+                           "╚                    ╝\n",
                 action = GetLamp,
           },
           new MenuSection
           {
-             sectionName = "╔════════════════════╗\n"+
-                           "|     Будильник      |\n"+
-                           "╚════════════════════╝\n",
+             sectionName = "╔                    ╗\n"+
+                           "      Будильник       \n"+
+                           "╚                    ╝\n",
                 action = GetAlarmLock,
           },
           new MenuSection
           {
-             sectionName = "╔════════════════════╗\n"+
-                           "|       Замок        |\n"+
-                           "╚════════════════════╝\n",
+             sectionName = "╔                    ╗\n"+
+                           "        Замок         \n"+
+                           "╚                    ╝\n",
                 action = GetSmartLock,
           },
           new MenuSection
           {
-             sectionName = "╔════════════════════╗\n"+
-                           "|     Термометр      |\n"+
-                           "╚════════════════════╝\n",
+             sectionName = "╔                    ╗\n"+
+                           "      Термометр       \n"+
+                           "╚                    ╝\n",
                 action = GetThermostat,
           },
 
           new MenuSection
           {
-             sectionName = "╔════════════════════╗\n"+
-                           "|       Выход        |\n"+
-                           "╚════════════════════╝\n",
+             sectionName = "╔                    ╗\n"+
+                           "        Выход         \n"+
+                           "╚                    ╝\n",
              action = GetMainMenu,
 
 
@@ -226,38 +226,38 @@ internal class TestMenu
       {
           new MenuSection
           {
-             sectionName = "╔════════════════════╗\n"+
-                           "|       Лампа        |\n"+
-                           "╚════════════════════╝\n",
+             sectionName = "╔                    ╗\n"+
+                           "        Лампа         \n"+
+                           "╚                    ╝\n",
                 action = GetLamp,
           },
           new MenuSection
           {
-             sectionName = "╔════════════════════╗\n"+
-                           "|      Будильник     |\n"+
-                           "╚════════════════════╝\n",
+             sectionName = "╔                    ╗\n"+
+                           "       Будильник      \n"+
+                           "╚                    ╝\n",
                 action = GetAlarmLock,
           },
           new MenuSection
           {
-             sectionName = "╔════════════════════╗\n"+
-                           "|       Замок        |\n"+
-                           "╚════════════════════╝\n",
+             sectionName = "╔                    ╗\n"+
+                           "        Замок         \n"+
+                           "╚                    ╝\n",
                 action = GetSmartLock,
           },
           new MenuSection
           {
-             sectionName = "╔════════════════════╗\n"+
-                           "|     Термометр      |\n"+
-                           "╚════════════════════╝\n",
+             sectionName = "╔                    ╗\n"+
+                           "      Термометр       \n"+
+                           "╚                    ╝\n",
                 action = GetThermostat,
           },
 
           new MenuSection
           {
-             sectionName = "╔════════════════════╗\n"+
-                           "|       Выход        |\n"+
-                           "╚════════════════════╝\n",
+             sectionName = "╔                    ╗\n"+
+                           "        Выход         \n"+
+                           "╚                    ╝\n",
              action = GetMainMenu,
 
 
@@ -268,38 +268,38 @@ internal class TestMenu
     public static List<MenuSection> options = new List<MenuSection>(){
                 new MenuSection
                 {
-                   sectionName = "╔════════════════════╗\n"+
-                                 "|      Включить      |\n"+
-                                 "╚════════════════════╝\n",
+                   sectionName = "╔                    ╗\n"+
+                                 "       Включить       \n"+
+                                 "╚                    ╝\n",
                       action = GetLamp,
                 },
                 new MenuSection
                 {
-                   sectionName = "╔════════════════════╗\n" +
-                                 "|      Выключить     |\n" +
-                                 "╚════════════════════╝\n",
+                   sectionName = "╔                    ╗\n" +
+                                 "       Выключить      \n" +
+                                 "╚                    ╝\n",
                   action = GetAlarmLock,
                 },
                 new MenuSection
                 {
-                   sectionName = "╔════════════════════╗\n" +
-                                 "| Изменить Параметры |\n" +
-                                 "╚════════════════════╝\n",
+                   sectionName = "╔                    ╗\n" +
+                                 "  Изменить Параметры  \n" +
+                                 "╚                    ╝\n",
                   action = GetSmartLock,
                 },
                 new MenuSection
                 {
-                   sectionName = "╔════════════════════╗\n" +
-                                 "|    Дополнительно   |\n" +
-                                 "╚════════════════════╝\n",
+                   sectionName = "╔                    ╗\n" +
+                                 "     Дополнительно    \n" +
+                                 "╚                    ╝\n",
                    action = GetThermostat,
                 },
 
                 new MenuSection
                 {
-                   sectionName = "╔════════════════════╗\n" +
-                                 "|       Выход        |\n" +
-                                 "╚════════════════════╝\n",
+                   sectionName = "╔                    ╗\n" +
+                                 "        Выход         \n" +
+                                 "╚                    ╝\n",
                   action = GetMainMenu,
 
 

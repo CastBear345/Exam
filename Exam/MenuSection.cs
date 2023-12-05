@@ -11,7 +11,7 @@ using System.Threading.Tasks;
       
         public string sectionName { get; set; }
 
-        public string sectionTitle { get; set; }
+        public string? sectionTitle { get; set; }
         public Action action { get; set; }
         public Action get { get; set; }
         public int index { get; set; }

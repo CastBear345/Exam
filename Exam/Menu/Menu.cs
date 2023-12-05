@@ -10,8 +10,8 @@ internal class Menu
     public static void Start()
     {
 
-        List<Room> rooms = MenuHelper.CreateRoom();
-        ShowMenu(rooms);
+        /*List<Room> rooms = MenuHelper.CreateRoom();
+        ShowMenu(rooms);*/
 
     }
 
