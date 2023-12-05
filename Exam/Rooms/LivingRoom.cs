@@ -6,14 +6,21 @@ using System.Threading.Tasks;
 using System.IO;
 
 
-    public class LivingRoom
-    {
-        public static string[] LRmap = File.ReadAllLines(@"TextFile1.txt");
-    public static bool[] SaveSatings = new bool[3] {false,false,true };
 
-        //метод для вызова "пример вызова   GetLivingRoom(1,true) первый параметр это индекс обьекта второй вкл,выкл
-        //1 это лампа, 2 это телевизор, 3 это дверь она по умолчанию открыта, тоесть true
-        public static void GetLivingRoom(int obj, bool onoff)
+public class LivingRoom
+{
+
+    public static string[] LRmap = File.ReadAllLines(@"TextFile1.txt");
+    public static bool[] SaveSatings = new bool[3] { false, false, true };
+
+    private static void Lampset()
+    {
+        LivingRoom.GetLivingRoom(1, true);
+    }
+
+    //метод для вызова "пример вызова   GetLivingRoom(1,true) первый параметр это индекс обьекта второй вкл,выкл
+    //1 это лампа, 2 это телевизор, 3 это дверь она по умолчанию открыта, тоесть true
+    public static void GetLivingRoom(int obj, bool onoff)
         {
             char[,] room = MapFunctions.ConvertInFIleToCharArray(LRmap);
 
@@ -38,23 +45,23 @@ using System.IO;
         }
 
 
-        //метод для проверки массива SaveSatings
+    //метод для проверки массива SaveSatings
 
-        /* public static void Show()
-         {
-             bool[] set = SaveSatings;
+    public static void Show()
+    {
+        bool[] set = SaveSatings;
 
-             foreach(bool ru in set)
-             {
-                 Console.WriteLine(ru);
-             }
-         }*/
-
-
+        foreach (bool ru in set)
+        {
+            Console.WriteLine(ru);
+        }
+    }
 
 
-        //метод для включения и отключения обьектов
-        public static void LivingRoomSetings(char[,] map, bool lamp, bool tv, bool door)
+
+
+    //метод для вывода и включения, отключения обьектов
+    public static void LivingRoomSetings(char[,] map, bool lamp, bool tv, bool door)
         {
             for (int y = 0; y < map.GetLength(1); y++)
             {
@@ -90,7 +97,5 @@ using System.IO;
             SaveSatings = setings;
 
         }
-
-
-    }
+}
 
