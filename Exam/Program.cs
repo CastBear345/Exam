@@ -1,11 +1,16 @@
-﻿using System;
+﻿using Cinema;
+using System;
 using System.Collections.Generic;
 using System.Net.Mail;
 
 public class Program
 {
+   
     public static void Main()
     {
-        Menu.Start();
+        // Menu.Start();
+        TestMenu.GetMainMenu();
+        Console.ReadKey();
+
     }
 }
