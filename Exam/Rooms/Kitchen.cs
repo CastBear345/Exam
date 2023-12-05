@@ -11,7 +11,7 @@ using System.IO;
 
 internal class Kitchen
 {
-    public static string[] Kitchenmap = File.ReadAllLines(@"Kitchen.txt");
+    public static string[] Kitchenmap = File.ReadAllLines("Kitchen.txt");
     public static bool[] KitchenSatings = new bool[4] { false, false, false, false };
 
     //метод для вызова "пример вызова   GetLivingRoom(1,true) первый параметр это индекс обьекта второй вкл,выкл

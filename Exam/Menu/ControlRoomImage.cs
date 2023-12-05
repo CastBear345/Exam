@@ -24,7 +24,7 @@ public class ControlRoomsImages
         }
         else if (room.Name is "Кухня")
         {
-            Kitchen.GetKitchen(1, true);
+            Kitchen.GetKitchen(2, true);
         }
         else if (room.Name is "Детская")
         {

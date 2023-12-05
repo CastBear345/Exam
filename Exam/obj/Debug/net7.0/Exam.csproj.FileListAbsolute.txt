@@ -33,3 +33,10 @@ C:\Users\99670\Source\Repos\Exam\Exam\obj\Debug\net7.0\Exam.csproj.CoreCompileIn
 C:\Users\99670\Source\Repos\Exam\Exam\obj\Debug\net7.0\Exam.dll
 C:\Users\99670\Source\Repos\Exam\Exam\obj\Debug\net7.0\refint\Exam.dll
 C:\Users\99670\Source\Repos\Exam\Exam\obj\Debug\net7.0\Exam.pdb
+C:\Users\99670\source\repos\Exam\Exam\bin\Debug\net7.0\Exam.exe
+C:\Users\99670\source\repos\Exam\Exam\bin\Debug\net7.0\Exam.deps.json
+C:\Users\99670\source\repos\Exam\Exam\bin\Debug\net7.0\Exam.runtimeconfig.json
+C:\Users\99670\source\repos\Exam\Exam\bin\Debug\net7.0\Exam.dll
+C:\Users\99670\source\repos\Exam\Exam\bin\Debug\net7.0\Exam.pdb
+C:\Users\99670\source\repos\Exam\Exam\obj\Debug\net7.0\Exam.genruntimeconfig.cache
+C:\Users\99670\source\repos\Exam\Exam\obj\Debug\net7.0\ref\Exam.dll
