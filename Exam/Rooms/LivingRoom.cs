@@ -6,14 +6,91 @@ using System.Threading.Tasks;
 using System.IO;
 
 
-    public class LivingRoom
-    {
-        public static string[] LRmap = File.ReadAllLines(@"TextFile1.txt");
-    public static bool[] SaveSatings = new bool[3] {false,false,true };
 
-        //метод для вызова "пример вызова   GetLivingRoom(1,true) первый параметр это индекс обьекта второй вкл,выкл
-        //1 это лампа, 2 это телевизор, 3 это дверь она по умолчанию открыта, тоесть true
-        public static void GetLivingRoom(int obj, bool onoff)
+public class LivingRoom
+{
+        public static string[] LRmap = File.ReadAllLines(@"TextFile1.txt");
+        public static bool[] SaveSatings = new bool[3] {false,false,true };
+
+      public static List<MenuSection> livingRoom = new List<MenuSection>()
+      {
+          new MenuSection
+          {
+             sectionName = "╔════════════════════╗\n"+
+                           "|       лампа        |\n"+
+                           "╚════════════════════╝\n"
+          },
+          new MenuSection
+          {
+             sectionName = "╔════════════════════╗\n"+
+                           "|     телевизор      |\n"+
+                           "╚════════════════════╝\n"
+          },
+
+          new MenuSection
+          {
+             sectionName = "╔════════════════════╗\n"+
+                           "|       выход        |\n"+
+                           "╚════════════════════╝\n",
+             action = TestMenu.GetMainMenu,
+
+
+          }
+
+      };
+
+    public static List<MenuSection> livingRoomSettings = new List<MenuSection>()
+      {
+          new MenuSection
+          {
+             sectionName = "╔════════════════════╗\n"+
+                           "|       включить     |\n"+
+                           "╚════════════════════╝\n",
+              index = 1,
+          },
+          new MenuSection
+          {
+             sectionName = "╔════════════════════╗\n"+
+                           "|     выключить      |\n"+
+                           "╚════════════════════╝\n",
+             index = 2,
+          },
+
+          new MenuSection
+          {
+             sectionName = "╔════════════════════╗\n"+
+                           "|   вернутся назад   |\n"+
+                           "╚════════════════════╝\n",
+             action = LivingRoom.GetLivingroom ,
+
+
+          }
+
+    };
+
+    //public static bool CheckBool()
+    //{
+    //    if()
+    //    {
+
+    //    }
+
+
+    //    return;
+    //} 
+
+
+    private static void Lampset()
+    {
+        LivingRoom.GetLivingRoomDevice(1, true);
+    }
+
+
+
+
+    //метод для вызова "пример вызова   GetLivingRoom(1,true) первый параметр это индекс обьекта второй вкл,выкл
+    //1 это лампа, 2 это телевизор, 3 это дверь она по умолчанию открыта, тоесть true
+    public static void GetLivingRoomDevice(int obj, bool onoff)
         {
             char[,] room = MapFunctions.ConvertInFIleToCharArray(LRmap);
 
@@ -92,5 +169,11 @@ using System.IO;
         }
 
 
-    }
+        public static void GetLivingroom()
+        {
+        Navigation.ListNavigation(LivingRoom.livingRoom);
+        }
+
+
+}
 

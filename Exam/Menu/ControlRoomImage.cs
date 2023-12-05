@@ -12,7 +12,7 @@ public class ControlRoomsImages
     {
         if (room.Name is "Гостиная")
         {
-            LivingRoom.GetLivingRoom(1, true);
+            LivingRoom.GetLivingRoomDevice(1, true);
         }
         else if (room.Name is "Спальня")
         {

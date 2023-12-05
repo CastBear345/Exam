@@ -6,9 +6,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Cinema
-{
-    internal class Navigation
+
+    public class Navigation
     {
 
         public static void PrintMenuSelect(string name)
@@ -34,7 +33,7 @@ namespace Cinema
            
             foreach (var rasd in select)
             {
-                MenuSection.Index(index);
+                //MenuSection.Index(index);
 
                 if (rasd == select[index])
                 {   
@@ -86,6 +85,7 @@ namespace Cinema
                 {
                     Console.Clear();                    
                     list[index].action();
+                    list[index].get();
                     list[index].index = 1;
                     //MenuSection.Index(index);
                     
@@ -127,4 +127,4 @@ namespace Cinema
 
 
     }
-}
+

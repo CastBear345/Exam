@@ -1,5 +1,4 @@
-﻿using Cinema;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,15 +6,15 @@ using System.Threading.Tasks;
 
 
 internal class TestMenu
-    {
-      public static List<MenuSection> testMenu = new List<MenuSection>()
+{
+    public static List<MenuSection> testMenu = new List<MenuSection>()
                     {
                         new MenuSection
                         {
                            sectionName = "╔════════════════════╗\n" +
                                          "|     Гостинная      |\n"+
                                          "╚════════════════════╝\n" ,
-                           action = GetLivingRoomDevise , 
+                           action = GetLivingRoomDevise ,
 
                         },
                         new MenuSection
@@ -52,7 +51,7 @@ internal class TestMenu
                     };
 
 
-      public static List<MenuSection> livingRoom = new List<MenuSection>()
+    public static List<MenuSection> livingRoom = new List<MenuSection>()
       {
           new MenuSection
           {
@@ -60,12 +59,140 @@ internal class TestMenu
                            "|       лампа        |\n"+
                            "╚════════════════════╝\n"
           },
-           new MenuSection
+          new MenuSection
           {
              sectionName = "╔════════════════════╗\n"+
                            "|     телевизор      |\n"+
                            "╚════════════════════╝\n"
           },
+
+          new MenuSection
+          {
+             sectionName = "╔════════════════════╗\n"+
+                           "|       выход        |\n"+
+                           "╚════════════════════╝\n",
+             action = GetMainMenu,
+
+
+          }
+
+      };
+
+
+    public static List<MenuSection> kitchen = new List<MenuSection>()
+      {
+          new MenuSection
+          {
+             sectionName = "╔════════════════════╗\n"+
+                           "|       лампа        |\n"+
+                           "╚════════════════════╝\n"
+          },
+          new MenuSection
+          {
+             sectionName = "╔════════════════════╗\n"+
+                           "|     телевизор      |\n"+
+                           "╚════════════════════╝\n"
+          },
+           new MenuSection()
+           {
+              sectionName = "╔════════════════════╗\n" +
+                            "║        Чайник      ║\n" +
+                            "╚════════════════════╝",
+
+           },
+
+            new MenuSection()
+            {
+                sectionName = "╔════════════════════╗\n" +
+                              "║  Стиральная машина ║\n" +
+                              "╚════════════════════╝",
+            },
+
+          new MenuSection
+          {
+             sectionName = "╔════════════════════╗\n"+
+                           "|       выход        |\n"+
+                           "╚════════════════════╝\n",
+             action = GetMainMenu,
+
+
+          }
+
+      };
+
+    public static List<MenuSection> BathRoom = new List<MenuSection>()
+    {
+         new MenuSection()
+            {
+                sectionName ="╔════════════════════╗\n" +
+                             "║        Лампа       ║\n" +
+                             "╚════════════════════╝",
+            },
+          new MenuSection()
+            {
+                sectionName = "╔════════════════════╗\n" +
+                              "║  Стиральная машина ║\n" +
+                              "╚════════════════════╝",
+            },
+           new MenuSection()
+            {
+                sectionName = "╔════════════════════╗\n" +
+                              "║       Унитаз       ║\n" +
+                              "╚════════════════════╝",
+
+
+            },
+            new MenuSection()
+            {
+                sectionName = "╔════════════════════╗\n" +
+                              "║        Выйти       ║\n" +
+                              "╚════════════════════╝\n",
+            },
+
+    };
+
+    public static List<MenuSection> bedRoom = new List<MenuSection>()
+      {
+          new MenuSection
+          {
+             sectionName = "╔════════════════════╗\n"+
+                           "|       лампа        |\n"+
+                           "╚════════════════════╝\n"
+          },
+          new MenuSection
+          {
+             sectionName = "╔════════════════════╗\n"+
+                           "|     будильник      |\n"+
+                           "╚════════════════════╝\n"
+          },
+
+          new MenuSection
+          {
+             sectionName = "╔════════════════════╗\n"+
+                           "|       выход        |\n"+
+                           "╚════════════════════╝\n",
+             action = GetMainMenu,
+
+
+          }
+
+      };
+
+    public static List<MenuSection> childrensRoom = new List<MenuSection>()
+      {
+          new MenuSection
+          {
+             sectionName = "╔════════════════════╗\n"+
+                           "|       лампа        |\n"+
+                           "╚════════════════════╝\n"
+          },
+          new MenuSection
+          {
+             sectionName = "╔════════════════════╗\n"+
+                           "|      будильник     |\n"+
+                           "╚════════════════════╝\n"
+          },
+
           new MenuSection
           {
              sectionName = "╔════════════════════╗\n"+
@@ -92,5 +219,10 @@ internal class TestMenu
     {
         Environment.Exit(0);
     }
+
+
+
+
+
 
 }
