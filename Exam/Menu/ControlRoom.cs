@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 public class ControlRooms
 {
-    // Метод для управления комнатой
+    /*// Метод для управления комнатой
     public static void ControlRoom(Room room)
     {
         ConsoleKeyInfo keyInfo;
@@ -18,7 +18,7 @@ public class ControlRooms
             {
                 Console.Clear();
                 Menu.PrintFirst($"Управление комнатой {room.Name}");
-                /*ControlRoomsImages.ControlRoomImage(room);*/// Создает рисунок комнаты
+                *//*ControlRoomsImages.ControlRoomImage(room);*//*// Создает рисунок комнаты
                 Menu.PrintFirst("Выберите устройство для управления:");
                 for (int i = 0; i < room.Devices.Count; i++)// Выводится список доступных устройств в этой комнате
                 {
@@ -43,5 +43,5 @@ public class ControlRooms
 
             } while (keyInfo.Key != ConsoleKey.Escape);
         }
-    }
+    }*/
 }

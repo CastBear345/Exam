@@ -6,11 +6,11 @@ using System.Xml.Linq;
 public class Device
 {
 
-    public string Name { get; set; }
-    public bool IsLocked { get; set; }
-    private bool isOn;
+    public static string Name { get; set; }
+    public static bool IsLocked { get; set; }
+    private static bool isOn;
 
-    public bool IsOn
+    public static bool IsOn
     {
         get { return isOn; }
         set
@@ -25,13 +25,13 @@ public class Device
         IsOn = false;
     }
 
-    public virtual void TurnOn()
+    public static void TurnOn()
     {
         IsOn = true;
         Console.WriteLine($"{Name} включено");
     }
 
-    public virtual void TurnOff()
+    public static void TurnOff()
     {
         IsOn = false;
         Console.WriteLine($"{Name} выключено");

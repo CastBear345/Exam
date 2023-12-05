@@ -171,7 +171,7 @@ public class LivingRoom
 
         public static void GetLivingroom()
         {
-        Navigation.ListNavigation(LivingRoom.livingRoom);
+        Navigation.ListNavigation(LivingRoom.livingRoom, null);
         }
 
 

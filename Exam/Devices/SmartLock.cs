@@ -5,7 +5,7 @@ using System.Xml.Linq;
 
 public class SmartLock : Device
 {
-    public string Password { get; set; }
+    public static string Password { get; set; }
 
     public SmartLock(string name, string passcode) : base(name)
     {
@@ -14,19 +14,67 @@ public class SmartLock : Device
         SetPassword(passcode);
     }
 
-    public void Lock()
+    public static void GetChangeSmartLock()
+    {
+        if (IsLocked == false)
+        {
+            ConsoleColors.SetOrangeConsoleColor();
+            Console.Write("Введите измененный пароль: ");
+            if (int.TryParse(Console.ReadLine(), out int password))
+            {
+                SetPassword(password.ToString());
+            }
+            else
+            {
+                ConsoleColors.SetRedConsoleColor();
+                Console.WriteLine("Неверный ввод. Пароль должен быть числом.");
+            }
+        }
+        else
+        {
+            ConsoleColors.SetOrangeConsoleColor();
+            Console.Write("Замок в комнате закрыт.");
+            Console.Write("Введите пароль: ");
+            if (int.TryParse(Console.ReadLine(), out int password))
+            {
+                UnlockWithPassword(password.ToString());
+            }
+            else
+            {
+                ConsoleColors.SetRedConsoleColor();
+                Console.WriteLine("Неверный ввод. Пароль должен быть числом.");
+            }
+        }
+    }
+
+    public static void GetSetSmartLock()
+    {
+        ConsoleColors.SetOrangeConsoleColor();
+        Console.Write("Введите пароль: ");
+        if (int.TryParse(Console.ReadLine(), out int password))
+        {
+            UnlockWithPassword(password.ToString());
+        }
+        else
+        {
+            ConsoleColors.SetRedConsoleColor();
+            Console.WriteLine("Неверный ввод. Пароль должен быть числом.");
+        }
+    }
+
+    public static void Lock()
     {
         IsLocked = true;
         Console.WriteLine($"{Name} закрыт");
     }
 
-    public void Unlock()
+    public static void Unlock()
     {
         IsLocked = false;
         Console.WriteLine($"{Name} открыт");
     }
 
-    public void SetPassword(string newPassword)
+    public static void SetPassword(string newPassword)
     {
         if (ValidatePassword(newPassword) == true)
         {
@@ -35,7 +83,7 @@ public class SmartLock : Device
         }
     }
 
-    public void UnlockWithPassword(string enteredPassword)
+    public static void UnlockWithPassword(string enteredPassword)
     {
         if (ValidatePassword(enteredPassword) == true)
         {
@@ -47,7 +95,7 @@ public class SmartLock : Device
         }
     }
 
-    private bool ValidatePassword(string inputPassword)
+    private static bool ValidatePassword(string inputPassword)
     {
         bool isPasswordValid = Password.Equals(inputPassword) && inputPassword.Length >= 5;
 

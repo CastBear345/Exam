@@ -271,7 +271,7 @@ internal class TestMenu
                    sectionName = "╔                    ╗\n"+
                                  "       Включить       \n"+
                                  "╚                    ╝\n",
-                      action = GetLamp,
+                   action = GetThermostat,
                 },
                 new MenuSection
                 {
@@ -283,16 +283,9 @@ internal class TestMenu
                 new MenuSection
                 {
                    sectionName = "╔                    ╗\n" +
-                                 "  Изменить Параметры  \n" +
-                                 "╚                    ╝\n",
-                  action = GetSmartLock,
-                },
-                new MenuSection
-                {
-                   sectionName = "╔                    ╗\n" +
                                  "     Дополнительно    \n" +
                                  "╚                    ╝\n",
-                   action = GetThermostat,
+                   action = EditDevicesParameters.GetLampEdit,
                 },
 
                 new MenuSection
@@ -309,68 +302,68 @@ internal class TestMenu
     ////////////////////////////////
     public static void GetLivingRoomDevise()
     {
-        Navigation.ListNavigation(TestMenu.livingRoom);
+        Navigation.ListNavigation(TestMenu.livingRoom, "Гостиная");
     }
     public static void GetKitchenDevise()
     {
-        Navigation.ListNavigation(TestMenu.kitchen);
+        Navigation.ListNavigation(TestMenu.kitchen, "Кухня");
     }
     public static void GetBathRoomDevise()
     {
-        Navigation.ListNavigation(TestMenu.bathRoom);
+        Navigation.ListNavigation(TestMenu.bathRoom, "Ванная");
     }
     public static void GetBedRoomDevise()
     {
-        Navigation.ListNavigation(TestMenu.bedRoom);
+        Navigation.ListNavigation(TestMenu.bedRoom, "Спальня");
     }
     public static void GetChildrensRoomDevise()
     {
-        Navigation.ListNavigation(TestMenu.childrensRoom);
+        Navigation.ListNavigation(TestMenu.childrensRoom, "Детская");
     }
     ////////////////////////////////
 
     ////////////////////////////////
     public static void GetLamp()
     {
-        Navigation.ListNavigation(TestMenu.options);
+        Navigation.ListNavigation(TestMenu.options, "Лампа");
     }
     public static void GetThermostat()
     {
-        Navigation.ListNavigation(TestMenu.options);
+        Navigation.ListNavigation(TestMenu.options, "Термометр");
     }
     public static void GetTelevision()
     {
-        Navigation.ListNavigation(TestMenu.options);
+        Navigation.ListNavigation(TestMenu.options, "Телевизор");
     }
     public static void GetAlarmLock()
     {
-        Navigation.ListNavigation(TestMenu.options);
+        Navigation.ListNavigation(TestMenu.options, "Будильник");
     }
     public static void GetKettle()
     {
-        Navigation.ListNavigation(TestMenu.options);
+        Navigation.ListNavigation(TestMenu.options, "Чайник");
     }
     public static void GetToilet()
     {
-        Navigation.ListNavigation(TestMenu.options);
+        Navigation.ListNavigation(TestMenu.options, "Туалет");
     }
     public static void GetWashingMachine()
     {
-        Navigation.ListNavigation(TestMenu.options);
+        Navigation.ListNavigation(TestMenu.options, "Стиралка");
     }
     public static void GetDishWasher()
     {
-        Navigation.ListNavigation(TestMenu.options);
+        Navigation.ListNavigation(TestMenu.options, "Посудомойка");
     }
     public static void GetSmartLock()
     {
-        Navigation.ListNavigation(TestMenu.options);
+        Navigation.ListNavigation(TestMenu.options, "Замок");
     }
     /////////////////////////////////
 
     public static void GetMainMenu()
     {
-        Navigation.ListNavigation(TestMenu.testMenu);
+        Navigation.ListNavigation(TestMenu.testMenu, null);
     }
 
     public static void OnExit()

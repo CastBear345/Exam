@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 public class ControlRoomsImages
 {
     // Метод для работы с прогрузкой изображений комнат
-    public static void ControlRoomImage(string str)
+    public static void ControlRoomImage(string? str)
     {
         if (str == "Гостиная")
         {

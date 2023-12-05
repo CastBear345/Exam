@@ -10,7 +10,7 @@ public class ControlDevices
     // Метод для управления устройством
     public static void ControlDevice(Device device)
     {
-        while (true)
+        /*while (true)
         {
             Console.Clear();
             List<string> options = new List<string>()
@@ -86,6 +86,6 @@ public class ControlDevices
             } while (keyInfo.Key != ConsoleKey.Escape);
 
             break; // Выход из внешнего цикла
-        }
+        }*/
     }
 }

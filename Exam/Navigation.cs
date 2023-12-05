@@ -9,22 +9,23 @@ using System.Threading.Tasks;
 
     public class Navigation
     {
-        public static void SelectMenu(int index, List<MenuSection> select)
+        public static void SelectMenu(int index, List<MenuSection> select, string? str)
         {
 
             // Console.Clear();
 
             // Console.WriteLine(select[index].sectionName);
            
+            ControlRoomsImages.ControlRoomImage(str);
+            Console.WriteLine();
             foreach (var rasd in select)
             {
-                //MenuSection.Index(index);
-
+            //MenuSection.Index(index);
                 if (rasd == select[index])
                 {   
                     
                     Console.ForegroundColor = ConsoleColor.Black;
-                    Console.BackgroundColor = ConsoleColor.White;
+                    Console.BackgroundColor = ConsoleColor.Yellow;
                     Console.WriteLine(rasd.sectionName);
 
             }
@@ -39,11 +40,11 @@ using System.Threading.Tasks;
             }
         }
 
-        public static void ListNavigation(List<MenuSection> list)
+        public static void ListNavigation(List<MenuSection> list, string? str)
         {
           
             int index = 0;
-            SelectMenu(index, list);
+            SelectMenu(index, list, str);
             ConsoleKeyInfo key;
 
             do
@@ -56,14 +57,14 @@ using System.Threading.Tasks;
                     if (index > list.Count) { index = index - 1; }
                     index++;
                     Console.Clear();
-                    SelectMenu(index, list);
+                    SelectMenu(index, list, str);
                     
                 }
                 if (key.Key == ConsoleKey.UpArrow && index - 1 >= 0)
                 {
                     index--;
                     Console.Clear();
-                    SelectMenu(index, list);
+                    SelectMenu(index, list, str);
                     
                 }
                 if (key.Key == ConsoleKey.Enter)
@@ -75,7 +76,7 @@ using System.Threading.Tasks;
                     //MenuSection.Index(index);
                     
                  
-                    SelectMenu(index, list);
+                    SelectMenu(index, list, str);
 
                     index = 0;
                 }
@@ -83,5 +84,5 @@ using System.Threading.Tasks;
             );
 
             Console.ReadKey();
-        }
     }
+}
