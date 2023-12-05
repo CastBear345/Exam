@@ -54,7 +54,7 @@ internal class ChildrensRoom
 
 
 
-    //метод для включения и отключения обьектов
+    //метод для вывода и включения, отключения обьектов
     public static void LivingRoomSetings(char[,] map, bool lamp, bool alarm, bool door)
     {
         for (int y = 0; y < map.GetLength(1); y++)

@@ -85,7 +85,7 @@ internal class BathRoom
 
 
 
-    //метод для включения и отключения обьектов
+    //метод для вывода и включения, отключения обьектов
     public static void BathRoomSetings(char[,] map, bool lamp, bool washing, bool toilet, bool bide)
     {
         for (int y = 0; y < map.GetLength(1); y++)

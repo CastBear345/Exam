@@ -52,7 +52,7 @@ internal class BedRoom
 
 
 
-    //метод для включения и отключения обьектов
+    //метод для вывода и включения, отключения обьектов
     public static void BedRoomSetings(char[,] map, bool lamp, bool Alarm, bool door)
     {
         for (int y = 0; y < map.GetLength(1); y++)

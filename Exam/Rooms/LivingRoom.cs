@@ -115,23 +115,23 @@ public class LivingRoom
         }
 
 
-        //метод для проверки массива SaveSatings
+    //метод для проверки массива SaveSatings
 
-        /* public static void Show()
+    /* public static void Show()
+     {
+         bool[] set = SaveSatings;
+
+         foreach(bool ru in set)
          {
-             bool[] set = SaveSatings;
-
-             foreach(bool ru in set)
-             {
-                 Console.WriteLine(ru);
-             }
-         }*/
+             Console.WriteLine(ru);
+         }
+     }*/
 
 
 
 
-        //метод для включения и отключения обьектов
-        public static void LivingRoomSetings(char[,] map, bool lamp, bool tv, bool door)
+    //метод для вывода и включения, отключения обьектов
+    public static void LivingRoomSetings(char[,] map, bool lamp, bool tv, bool door)
         {
             for (int y = 0; y < map.GetLength(1); y++)
             {
