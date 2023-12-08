@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-internal class BedRoom
+public class BedRoom
 {
     public static string[] BRmap = File.ReadAllLines(@"Bedroom.txt");
     public static bool[] BRSatings = new bool[3] { false, false, true };
@@ -35,6 +35,19 @@ internal class BedRoom
 
         BedRoom.BedRoomSetings(room, lamp, tv, door);
     }
+
+    public static void GetBedRoom()
+    {
+        char[,] room = MapFunctions.ConvertInFIleToCharArray(BRmap);
+
+        bool lamp = BRSatings[0];
+        bool tv = BRSatings[1];
+        bool door = BRSatings[2];
+
+
+        BedRoom.BedRoomSetings(room, lamp, tv, door);
+    }
+
 
 
     //метод для проверки массива SaveSatings

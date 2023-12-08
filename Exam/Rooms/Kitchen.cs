@@ -9,9 +9,9 @@ using System.IO;
 
 
 
-internal class Kitchen
+public class Kitchen
 {
-    public static string[] Kitchenmap = File.ReadAllLines(@"Kitchen.txt");
+    public static string[] Kitchenmap = File.ReadAllLines("Kitchen.txt");
     public static bool[] KitchenSatings = new bool[4] { false, false, false, false };
 
     //метод для вызова "пример вызова   GetLivingRoom(1,true) первый параметр это индекс обьекта второй вкл,выкл
@@ -40,6 +40,18 @@ internal class Kitchen
         {
             dishwasher = onoff;
         }
+
+        Kitchen.KitchenSetings(room, lamp, tv, kettle, dishwasher);
+    }
+
+    public static void GetKitchen()
+    {
+        char[,] room = MapFunctions.ConvertInFIleToCharArray(Kitchenmap);
+
+        bool lamp = KitchenSatings[0];
+        bool tv = KitchenSatings[1];
+        bool kettle = KitchenSatings[2];
+        bool dishwasher = KitchenSatings[3];
 
         Kitchen.KitchenSetings(room, lamp, tv, kettle, dishwasher);
     }
@@ -97,6 +109,7 @@ internal class Kitchen
         setings[0] = lamp;
         setings[1] = tv;
         setings[2] = kettle;
+        setings[3] = dishwasher;
 
         KitchenSatings = setings;
 

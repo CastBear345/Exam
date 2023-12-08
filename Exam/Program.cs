@@ -1,13 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net.Mail;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-public class Program
+namespace SmartHome
 {
-   
-    public static void Main()
+    public class Program
     {
-        TestMenu.GetMainMenu();
-        Console.ReadKey();
+        static void Main(string[] args)
+        {
+            Navigation.Greetings();
+            Menu.ShowMainMenu();
+
+
+            Console.ReadKey();
+        }
     }
 }
+    

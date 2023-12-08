@@ -7,7 +7,7 @@ using System.IO;
 
 
 
-internal class ChildrensRoom
+public class ChildrensRoom
 {
     public static string[] ChRmap = File.ReadAllLines(@"ChildrensRoom.txt");
     public static bool[] CrSatings = new bool[3] { false, false, true };
@@ -19,7 +19,7 @@ internal class ChildrensRoom
         char[,] room = MapFunctions.ConvertInFIleToCharArray(ChRmap);
 
         bool lamp = CrSatings[0];
-        bool tv = CrSatings[1];
+        bool alarm = CrSatings[1];
         bool door = CrSatings[2];
 
         if (obj == 1)
@@ -28,16 +28,26 @@ internal class ChildrensRoom
         }
         else if (obj == 2)
         {
-            tv = onoff;
+            alarm = onoff;
         }
         else if (obj == 3)
         {
             door = onoff;
         }
 
-        ChildrensRoom.LivingRoomSetings(room, lamp, tv, door);
+        ChildrensRoom.LivingRoomSetings(room, lamp, alarm, door);
     }
 
+    public static void GetChildrensRoom()
+    {
+        char[,] room = MapFunctions.ConvertInFIleToCharArray(ChRmap);
+
+        bool lamp = CrSatings[0];
+        bool alarm = CrSatings[1];
+        bool door = CrSatings[2];
+
+        ChildrensRoom.LivingRoomSetings(room, lamp, alarm, door);
+    }
 
     //метод для проверки массива SaveSatings
 

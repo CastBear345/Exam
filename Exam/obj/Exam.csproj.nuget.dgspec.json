@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Новая папка\\Exam\\Exam.csproj": {}
+    "C:\\Users\\99670\\source\\repos\\Exam\\Exam\\Exam.csproj": {}
   },
   "projects": {
-    "C:\\Новая папка\\Exam\\Exam.csproj": {
+    "C:\\Users\\99670\\source\\repos\\Exam\\Exam\\Exam.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Новая папка\\Exam\\Exam.csproj",
+        "projectUniqueName": "C:\\Users\\99670\\source\\repos\\Exam\\Exam\\Exam.csproj",
         "projectName": "Exam",
-        "projectPath": "C:\\Новая папка\\Exam\\Exam.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Новая папка\\Exam\\obj\\",
+        "projectPath": "C:\\Users\\99670\\source\\repos\\Exam\\Exam\\Exam.csproj",
+        "packagesPath": "C:\\Users\\99670\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\99670\\source\\repos\\Exam\\Exam\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\99670\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -59,7 +55,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

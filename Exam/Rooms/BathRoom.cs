@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-internal class BathRoom
+public class BathRoom
 {
     public static string[] Bathroommap = File.ReadAllLines(@"Bathroom.txt");
     public static bool[] BathroomSatings = new bool[4] { false, false, false, false };
@@ -65,6 +65,18 @@ internal class BathRoom
         //    toilet = onoff;
         //    bide = one;
         //}
+
+        BathRoom.BathRoomSetings(room, lamp, washing, toilet, bide);
+    }
+
+    public static void GetBathRoom()
+    {
+        char[,] room = MapFunctions.ConvertInFIleToCharArray(Bathroommap);
+
+        bool lamp = BathroomSatings[0];
+        bool washing = BathroomSatings[1];
+        bool toilet = BathroomSatings[2];
+        bool bide = BathroomSatings[3];
 
         BathRoom.BathRoomSetings(room, lamp, washing, toilet, bide);
     }
